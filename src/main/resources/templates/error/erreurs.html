@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+
+        <!-- fichier HTML encodé en UTF-8 -->
+        <meta charset="UTF-8" />
+       
+        <!-- compatibilité avec les anciennes versions d'Internet Explorer -->
+        <!--[if IE]>
+            <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <![endif]-->
+
+        <!--Description du contenu de la page-->
+        <meta name="description" content="page d'erreur, ..." />
+
+        <!--Mots clé-->
+        <meta name="keywords" content="erreurs, page error, ..." />
+
+        <!-- pour site responsive -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+       <!-- lien vers CSS -->
+       <link rel="stylesheet" href="../../static/css/application.css" th:href="@{/css/application.css}" />
+
+        <!--Bootstrap-->
+        <link rel="stylesheet" type="text/css" 
+		href="../../static/css/bootstrap.min.css" 
+        th:href="@{/css/bootstrap.min.css}" />
+        
+        <!-- titre de l'onglet -->
+        <title>error/erreurs.html</title>
+        
+    </head>
+
+    <body>
+ 
+        <header class="container-fluid header">
+            <div class="container">
+
+            </div>
+        </header>
+
+        <section class="container-fluid banner">
+            <div class="container">
+
+            </div>
+        </section> 
+
+        <section class="container-fluid main">
+
+            <h1>Page d'erreurs error/erreurs.html</h1>
+
+            <div>
+                <a th:href="@{/}">retour vers l'accueil</a>
+            </div>
+            
+            <div class="container">
+                <table class="table table-bordered">
+                    <thead class="thead-light">
+                        <tr>
+                        <th scope="col">Caractéristique de l'erreur</th>
+                        <th scope="col">Valeur</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>DATE DE L'ERREUR (timestamp) : </td>
+                            <td th:text="${timestamp}">date de l'erreur</td>
+                        </tr>
+                        <tr>
+                            <td>PATH AYANT GENERE L'ERREUR (path) : </td>
+                            <td th:text="${path}">Path ayant généré l'erreur</td>
+                        </tr>
+                        <tr>
+                            <td>URL AYANT GENERE L'ERREUR (requestUrl) : </td>
+                            <td th:text="${requestUrl}">URL ayant généré l'erreur</td>
+                        </tr>
+                        <tr>
+                            <td>TYPE D'ERREUR (error) : </td>
+                            <td th:text="${error}">Type de l'erreur</td>
+                        </tr>
+                        <tr>
+                            <td>STATUS DE L'ERREUR (status) : </td>
+                            <td th:text="${status}">Status</td>
+                        </tr>
+                        <tr>
+                            <td>MESSAGE DE L'ERREUR (message) : </td>
+                            <td th:text="${message}">Message de l'erreur</td>
+                        </tr>
+                        <tr>
+                            <td>EXCEPTION LEVEE (exception) : </td>
+                            <td th:text="${exception}">Exception</td>
+                        </tr>
+                        <tr>
+                            <td>TRACE DE L'EXCEPTION (trace) : </td>
+                            <td>
+                                <pre th:text="${trace}">Trace de l'Exception</pre>
+                            </td>
+                        </tr>	
+                    </tbody>
+                </table>
+            
+            </div>
+        
+        </section>
+
+        <div>
+            <ul>
+                <li>
+                    <a th:href="@{/}">retour vers l'accueil</a>
+                </li>
+            </ul>            
+        </div>
+
+        <footer class="container-fluid footer">
+
+        </footer>
+				 
+    </body>
+
+</html>

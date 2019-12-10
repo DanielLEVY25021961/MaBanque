@@ -1,0 +1,18 @@
+                    DOCUMENTATION CERBERE-BOUCHON
+
+--------------------------------------------------------------------------------
+| Documentation développeur d'applications sécurisées par Cerbère/Cactus
+--------------------------------------------------------------------------------
+- NOTE-Cerbere-InstallationBouchon.pdf : Installation du filtre Cerbère.
+- NOTE-Cerbere-API.pdf                 : API de programmation de Cerbère.
+- /javadoc                             : Javadoc des API Cerbère/Cactus.
+- referentiel.xsd                      : Schéma XML de validation du fichier.
+- ISO-pays-A2.properties               : Liste des codes pays.
+
+--------------------------------------------------------------------------------
+| Exemples
+--------------------------------------------------------------------------------
+- cerbere-filtre-bouchon.xml : Exemple de fichier de configuration XML pour le mode bouchon. 
+- web.xml : Définition du filtre Cerbère/Cactus dans le descripteur
+                       de déploiement de l'application.
+

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr" 
+	xmlns:th="http://www.thymeleaf.org" 
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+			layout:decorate="~{layouts/layout_classique}">
+
+    <head>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+<!--         <link th:href="@{/css/core.css}" rel="stylesheet" media="screen" /> -->
+
+        <!-- lien vers CSS -->
+        <link rel="stylesheet" href="../../../static/css/application.css" th:href="@{/css/application.css}" />
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" type="text/css" href="../../../static/css/bootstrap.min.css"
+            th:href="@{/css/bootstrap.min.css}" /> 
+            
+        <title>userspring/userspring.html</title>
+        
+    </head>
+    
+    
+    <body>
+    
+        <div class="container">
+    
+            <!-- CONTENU DECORANT LE LAYOUT DANS CETTE SECTION -->
+            <div layout:fragment="content">
+    
+                <div class="container-fluid">
+
+                    <div class="container">
+
+                        <h2>PAGE D'ADMINISTRATION DES USERS USERSPRING/USERSPRING.html</h2>
+
+                        <div th:inline="text">BONJOUR '[[${#httpServletRequest.remoteUser}]]',
+                            VOUS ETES LOGGE EN TANT QUE '[[${#httpServletRequest.remoteUser}]]'.
+                        </div>
+
+
+                        <h3 class="mt-5">MENU : </h3>
+
+                        <!-- DEBUT DIV MENU ADMINISTRATION USERS SPRING -->
+                        <div>
+
+                            <ul class="nav nav-fill">
+
+                                <li class="nav-item">
+                                    <a th:href="@{/UserSpringController/versPageCreateUserSpring}">vers Création d'un USER SPRING</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a th:href="@{/UserSpringController/versPageDeleteUserSpring}">vers Destruction d'un USER SPRING</a>
+                                </li>
+
+                            </ul>
+
+                        <!-- FIN DIV MENU ADMINISTRATION USERS SPRING -->
+                        </div>
+
+                        <!-- DEBUT DIV LISTE USERS STOCKES -->
+                        <div>
+
+                            <h2 class="mt-5 ml-3"><u>Liste des USERS déjà en base : </u></h2>
+
+                            <div th:if="${listeObjetsDansPage}">
+
+                                <table class="table table-striped mt-5">
+
+                                    <head>
+    
+                                        <tr>
+                                            <th>username</th><th>password</th><th>actif</th><th>Rôles</th>
+                                        </tr>
+    
+                                    </head>
+    
+                                    <body>
+
+                                        <tr th:each="user : ${listeObjetsDansPage}">
+
+                                            <td th:text="${user.getUsername()}">username</td>
+                                            <td th:text="${user.getPassword()}">password</td>
+                                            <td th:text="${user.isActive()}">active</td>
+                                            <td>
+                                                <span th:each="role : ${user.getRoles()}" th:text="${role.getRole() +', '}"></span>
+                                            </td>
+
+                                        </tr>
+                                         
+                                    </body>
+    
+                                </table>
+
+                            </div>
+
+                        <!-- FIN DIV LISTE USERS STOCKES -->    
+                        </div>
+
+                        <!-- DEBUT DIV PAGINATION -->
+                        <div class="container-fluid" th:if="${pages}">
+
+                            <ul class="nav nav-pills">
+                                <li class="nav-item" th:each="page, status : ${pages}">
+                                    <a class="nav-link text-white bg-primary m-3" th:text="${status.index} + 1" 
+                                        th:href="@{/UserSpringController/versPageUserSpring(page=${status.index})}">index</a>
+                                </li>
+                            </ul>
+
+                        <!-- FIN DIV PAGINATION -->
+                        </div>
+    
+                    </div>
+
+                </div>
+                                     
+            </div>
+                               
+        </div>
+            
+    </body>
+    
+</html>

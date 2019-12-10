@@ -1,0 +1,455 @@
+<!DOCTYPE html>       	
+<html lang="fr" 
+	xmlns:th="http://www.thymeleaf.org" 
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5" 
+			layout:decorate="~{layouts/layout_classique}">
+        	       
+	<head>
+
+		<!-- fichier HTML encodé en UTF-8 -->
+		<meta charset="UTF-8" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		
+        <!-- compatibilité avec les anciennes versions d'Internet Explorer -->
+        <!--[if IE]>
+            <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<![endif]-->
+
+        <!--Description du contenu de la page-->
+        <meta name="description" content="accueil, ..." />
+
+        <!--Mots clé-->
+        <meta name="keywords" content="accueil, page accueil, ..." />
+		
+        <!-- pour site responsive -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+		<!-- lien vers CSS -->
+		<link rel="stylesheet" 
+			href="../../../static/css/application.css" 
+				th:href="@{/css/application.css}" />
+
+		<!-- Bootstrap -->
+		<link rel="stylesheet" type="text/css" 
+			href="../../../static/css/bootstrap.min.css" 
+				th:href="@{/css/bootstrap.min.css}" />
+
+		<!-- titre de l'onglet -->
+		<title>metier/mabanque/mabanque.html</title>
+
+	</head>
+	
+	<body>
+
+		<!-- DEBUT DIV CONTAINER -->
+		<div class="container-fluid">
+		
+			<!-- DEBUT DIV FRAGMENT CONTENU DECORANT LE LAYOUT DANS CETTE SECTION -->
+			<div layout:fragment="content">
+			
+				<!-- DEBUT DIV ROW-->
+				<div class="row">
+
+					<!-- DEBUT DIV colonne de gauche -->
+					<div class="col-6 w-100">
+
+						<div th:inline="text">BONJOUR '[[${#httpServletRequest.remoteUser}]]',
+							VOUS ETES LOGGE EN TANT QUE '[[${#httpServletRequest.remoteUser}]]'.
+						</div>
+
+						<!-- DEBUT DIV CONSULTATION COMPTE -->
+						<div class="card m-3">
+
+							<div class="card-header text-white bg-primary">Consultation d'un compte</div>
+							<div class="card-body">
+
+								<div th:if="${message}" class="messageKOclass">
+									<p th:text="${message}">message utilisateur</p>
+								</div>
+
+								<form action="/MaBanqueController/consulterCompte" method="GET">
+
+									<div>
+
+										<label for="codeCompte">Code du compte à rechercher : </label>
+										<input type="text" id="codeCompte" name="codeCompte" th:value="${codeCompte}"
+											placeholder="indiquez le code du compte" class="mark" 
+											onforminput="document.getElementById('divCodeCompteDestinataire').style.display='none'"/>
+										<button type="submit" class="btn btn-primary">Rechercher</button>
+
+									</div>
+
+								</form>
+
+							</div>
+
+						<!-- FIN DIV CONSULTATION COMPTE -->	
+						</div>
+					
+						<!-- DEBUT DIV INFORMATIONS COMPTE -->
+						<div class="card m-3">
+							<div class="card-header text-white bg-primary">Informations sur le compte</div>
+							<div class="card-body">
+
+								<!-- DEBUT DIV CODE COMPTE -->
+								<div>
+
+									<label for="labelCodeCompte">Code du compte : </label>
+
+									<span th:if="${compte}">
+										<label th:text="${compte.codeCompte}" class="font-weight-bold" id="labelCodeCompte">valeur du code du compte</label>
+									</span>
+
+								<!-- FIN DIV CODE COMPTE -->	
+								</div>
+
+								<!-- DEBUT DIV DATE CREATION COMPTE -->
+								<div>
+
+									<label for="labelDateCreation">Date de création du compte : </label>
+
+									<span th:if="${compte}">
+										<label th:text="${compte.dateCreation}" class="font-weight-bold" id="labelDateCreation">valeur de Date de création du compte</label>
+									</span>
+	
+								<!-- FIN DIV DATE CREATION COMPTE -->
+								</div>
+	
+								<!-- DEBUT DIV TYPE COMPTE -->
+								<div>
+
+									<label for="labelTypeCompte">Type du compte : </label>
+
+									<span th:if="${typeCompte}">
+										<label th:text="${typeCompte}" class="font-weight-bold" id="labelTypeCompte">valeur de Type du compte</label>
+									</span>
+	
+								<!-- FIN DIV TYPE COMPTE -->
+								</div>
+
+								<!-- DEBUT DIV DECOUVERT AUTORISE COMPTE (CIRCONSTANCIEL) -->
+								<div th:if="${typeCompte}">
+
+									<!-- DEBUT DIV TEST TYPE DE COMPTE -->
+									<div th:if="${typeCompte.equals('CompteCourantEntityJPA')}">
+
+										<label for="labelDecouvertAutorise">Découvert autorisé du compte : </label>
+	
+										<span>
+											<label th:text="${compte.decouvertAutorise}" class="font-weight-bold" id="labelDecouvertAutorise">
+												valeur de Découvert autorisé du compte
+											</label>
+											<span> € (euros)</span>
+										</span>
+
+									<!-- FIN DIV TEST TYPE DE COMPTE -->	
+									</div>
+
+								<!-- FIN DIV DECOUVERT AUTORISE COMPTE (CIRCONSTANCIEL) -->
+								</div>
+
+								<!-- DEBUT DIV TAUX COMPTE (CIRCONSTANCIEL) -->
+								<div th:if="${typeCompte}">
+
+									<!-- DEBUT DIV TEST TYPE DE COMPTE -->
+									<div th:if="${typeCompte.equals('CompteEpargneEntityJPA')}">
+
+										<label for="labelTaux">taux d'épargne du compte : </label>
+	
+										<span>
+											<label th:text="${compte.taux}" class="font-weight-bold" id="labelTaux">
+												taux d'épargne du compte
+											</label>
+											<span> %</span>
+										</span>
+
+									<!-- FIN DIV TEST TYPE DE COMPTE -->	
+									</div>
+
+								<!-- FIN DIV TAUX COMPTE (CIRCONSTANCIEL) -->
+								</div>
+
+								<!-- DEBUT DIV SOLDE COMPTE -->
+								<div>
+
+									<label for="labelSolde">Solde du compte : </label>
+
+									<span th:if="${compte}">
+										<label th:text="${compte.solde}" class="font-weight-bold" id="labelSolde">valeur du solde du compte</label> 
+										<span> € (euros)</span>
+									</span>
+	
+								<!-- FIN DIV SOLDE COMPTE -->
+								</div>
+	
+								<!-- DEBUT DIV CODE CLIENT -->
+								<div>
+
+									<label for="labelCodeClient">Code du client titulaire du compte : </label>
+
+									<span th:if="${compte}">
+
+										<span th:if="${compte.client}">
+											<label th:text="${compte.client.id}" class="font-weight-bold" id="labelCodeClient">valeur du Code du client</label>
+										</span>
+										
+									</span>
+	
+								<!-- FIN DIV CODE CLIENT -->
+								</div>
+
+								<!-- DEBUT DIV NOM CLIENT -->
+								<div>
+
+									<label for="labelNomClient">Nom du client titulaire du compte : </label>
+
+									<span th:if="${compte}">
+
+										<span th:if="${compte.client}">
+											<label th:text="${compte.client.nom}" class="font-weight-bold" id="labelNomClient">valeur du Nom du client</label>
+										</span>
+										
+									</span>
+	
+								<!-- FIN DIV NOM CLIENT -->
+								</div>
+
+								<!-- DEBUT DIV EMAIL CLIENT -->
+								<div>
+
+									<label for="labelEmailClient">e-mail du client titulaire du compte : </label>
+
+									<span th:if="${compte}">
+
+										<span th:if="${compte.client}">
+											<label th:text="${compte.client.email}" class="font-weight-bold" id="labelEmailClient">valeur eMail du client</label>
+										</span>
+										
+									</span>
+	
+								<!-- FIN DIV EMAIL CLIENT -->
+								</div>
+			
+							</div>
+
+						<!-- FIN DIV INFORMATIONS COMPTE -->
+						</div>
+
+					<!-- FIN  DIV colonne de gauche -->
+					</div>
+
+					<!-- DEBUT DIV colonne de droite -->
+					<div class="col-6 w-100">
+						
+						<!-- DEBUT DIV OPERATIONS COMPTE -->
+						<div class="card m-3" sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_GESTIONNAIRE')">
+							<div class="card-header text-white bg-primary">Opérations sur le compte</div>
+							<div class="card-body">
+
+								<div th:if="${messageOperation}" class="messageKOclass">
+									<p th:text="${messageOperation}">message utilisateur</p>
+								</div>
+
+								<div th:if="${compte}">
+
+									<!-- DEBUT FORMULAIRE ENREGISTRER OPERATION -->
+									<form action="/MaBanqueController/enregistrerOperation" method="POST">
+
+										<div>
+
+											<label for="codeCompteHidden">
+												Code du compte (caché pour l'envoi au serveur) : 
+											</label>
+											<input type="hidden" 
+											name="codeCompte" id="codeCompteHidden" th:value="${codeCompte}"/>
+											<label th:text="${compte.codeCompte}" class="font-weight-bold">
+												valeur du code du compte
+											</label>
+
+										</div>
+
+										<div class="container-fluid w-100">
+
+											<div>
+												<label class="font-weight-bold">
+													<ins>Type d'opération : </ins> 
+												</label>
+											</div>
+											
+											<!-- DEBUT DIV TABLEAU TYPE OPERATIONS -->
+											<div class="container-fluid mt-3 mb-3 w-100">
+
+												<table>
+
+													<tr>
+
+														<td class="col-1 text-right">
+															<label for="typeOperationVersement">Versement : </label>
+														</td>
+														<td class="col-1">
+															<input type="radio" name="typeOperation" 
+															id="typeOperationVersement" value="VERSEMENT" 
+															checked="checked"
+															onchange="document.getElementById('divCodeCompteDestinataire').style.display='none'"/>
+														</td>
+														<td class="col-1 text-right">
+															<label for="typeOperationRetrait">Retrait : </label>
+														</td>
+														<td class="col-1">
+															<input type="radio" name="typeOperation" 
+															id="typeOperationRetrait" value="RETRAIT" 
+															onchange="document.getElementById('divCodeCompteDestinataire').style.display='none'"/>
+														</td>
+														<td class="col-1 text-right">
+															<label for="typeOperationVirement">Virement : </label>
+														</td>
+														<td class="col-1">
+															<input type="radio" name="typeOperation" 
+															id="typeOperationVirement" value="VIREMENT" 
+															onchange="document.getElementById('divCodeCompteDestinataire').style.display='inline'"/>
+														</td>
+
+													</tr>
+
+												</table>
+
+											<!-- FIN DIV TABLEAU TYPE OPERATIONS -->
+											</div>
+
+											<!-- DEBUT DIV POUR COMPTE DESTINATAIRE VIREMENT -->
+											<div class="mt-6 mb-3" id="divCodeCompteDestinataire" style="display:none;">
+
+												<label class="font-weight-bold" for="codeCompteDestinataire">
+													Code du compte destinataire : 
+												</label>
+												<input class="mark" type="text" 
+													name="codeCompteDestinataire" id="codeCompteDestinataire" 
+														placeholder="indiquez le code du compte destinataire"/>
+
+											<!-- FIN DIV POUR COMPTE DESTINATAIRE VIREMENT -->
+											</div>
+	
+											<!-- DEBUT DIV MONTANT OPERATION -->
+											<div class="mt-3">
+
+												<label class="font-weight-bold" for="montantOperation">
+													<ins>Montant de l'opération : </ins>
+												</label>
+												<input type="text" name="montant" id="montantOperation" 
+													placeholder="indiquez le montant de l'opération" class="mark w-auto" />
+												<label for="montantOperation"> € (euros)</label>
+
+											<!-- FIN DIV MONTANT OPERATION -->
+											</div>
+
+											<!-- DEBUT DIV BOUTON ENREGISTRER/ANNULER -->
+											<div class="container-fluid mt-3">
+
+												<table class="container-fluid mt-3">
+
+													<tr>
+
+														<td class="w-50"> 
+
+															<button class="btn btn-primary" type="submit">
+																ENREGISTRER
+															</button>
+
+														</td>
+
+														<td class="w-50">
+
+															<button class="btn btn-info" type="reset">
+																ANNULER
+															</button>
+
+														</td>
+
+													</tr>
+
+												</table>
+
+											</div>
+
+										</div>
+
+									<!-- FIN FORMULAIRE ENREGISTRER OPERATION -->
+									</form>
+
+								</div>
+								
+							</div>
+
+						<!-- FIN DIV OPERATIONS COMPTE -->
+						</div>
+					
+						<!-- DEBUT DIV LISTE OPERATIONS COMPTE -->
+						<div class="card m-3">
+							<div class="card-header text-white bg-primary">Liste des opérations sur le compte</div>
+							<div class="card-body">
+								
+								<table class="table table-striped">
+
+									<tr>
+
+										<th>ID</th>
+										<th>Type de l'opération</th>
+										<th>date de l'opération</th>
+										<th>Montant de l'opération</th>
+
+									</tr>
+
+									<div th:if="${listeOperations}">
+
+										<tr th:each="operation : ${listeOperations}">
+
+											<td th:text="${operation.id}">ID de l'opération</td>
+											<td th:text="${operation.class.simpleName}">Type de l'opération</td>
+											<td th:text="${operation.dateOperation}">date de l'opération</td>
+											<span th:if="${operation.class.simpleName.equals('VersementEntityJPA')}">
+												<td class="text-primary" th:text="${operation.montant} + '  € (euros)'">Montant du versement</td>												
+											</span>
+											<span th:unless="${operation.class.simpleName.equals('VersementEntityJPA')}">
+												<td class="text-danger" th:text="${-operation.montant} + '  € (euros)'">Montant du retrait</td>
+											</span>
+											
+										</tr>
+
+									</div>
+
+								</table>
+
+								<!-- DEBUT DIV PAGINATION -->
+								<div class="container-fluid">
+
+									<ul class="nav nav-pills">
+										<li class="nav-item" th:each="page, status : ${pages}">
+											<a class="nav-link text-white bg-primary m-3" th:text="${status.index} + 1" 
+												th:href="@{/MaBanqueController/consulterCompte(codeCompte=${codeCompte}, page=${status.index})}">index</a>
+										</li>
+									</ul>
+
+								<!-- FIN DIV PAGINATION -->
+								</div>
+
+							</div>
+
+						<!-- FIN DIV LISTE OPERATIONS COMPTE -->
+						</div>
+
+					<!-- FIN DIV colonne de droite -->
+					</div>
+						
+				<!-- FIN DIV ROW-->
+				</div>
+
+			<!-- FIN DIV FRAGMENT CONTENU DECORANT LE LAYOUT DANS CETTE SECTION -->
+			</div>
+		
+		<!-- FIN DIV CONTAINER -->
+		</div>
+
+	</body>
+
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr" 
+	xmlns:th="http://www.thymeleaf.org" 
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+			layout:decorate="~{layouts/layout_classique}">
+
+	<head>
+
+		<!-- fichier HTML encodé en UTF-8 -->
+		<meta charset="UTF-8" />
+
+        <!-- compatibilité avec les anciennes versions d'Internet Explorer -->
+        <!--[if IE]>
+            <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<![endif]-->
+
+        <!--Description du contenu de la page-->
+        <meta name="description" content="accueil, ..." />
+
+        <!--Mots clé-->
+        <meta name="keywords" content="accueil, page accueil, ..." />
+		
+        <!-- pour site responsive -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+		<!-- lien vers CSS -->
+		<link rel="stylesheet" href="../static/css/application.css" th:href="@{/css/application.css}" />
+
+		<!-- Bootstrap -->
+		<link rel="stylesheet" type="text/css" 
+		href="../static/css/bootstrap.min.css" 
+		th:href="@{/css/bootstrap.min.css}" />
+
+		<!-- titre de l'onglet -->
+		<title>accueil/login.html</title>
+
+	</head>
+	
+	<body>
+	
+		<!-- DEBUT DIV CONTAINER -->
+		<div class="container-fluid">
+		
+			<!-- DEBUT DIV FRAGMENT CONTENU DECORANT LE LAYOUT DANS CETTE SECTION -->
+			<div layout:fragment="content">
+
+				<div class="container">
+
+					<h1>ACCUEIL/LOGIN.HTML</h1>
+
+					<!-- DEBUT SECTION CARD -->
+					<section class="card m-3">
+		
+						<div class="card-header text-white bg-primary">Page de Login</div>
+						<div class="card-body">
+							
+							<div th:if="${param.error}" class="alert alert-danger">    
+			                    Mauvaise authentification
+			                </div>
+			                
+			                <div th:if="${param.logout}" class="alert alert-success"> 
+			                    Vous êtes bien déloggé.
+			                </div>
+
+							<form th:action="@{/login}" method="POST">
+
+								<table>
+
+									<tr>
+										<td><label class="m-3" for="username">Login : </label></td>
+										<td><input class="m-3 mark" placeholder="indiquez votre identifiant" 
+												type="text" id="username" name="username">
+										</td>
+									</tr>
+
+									<tr>
+										<td><label class="m-3" for="password">Password : </label></td>
+										<td><input class="m-3 mark" placeholder="indiquez votre mot de passe" 
+												type="password" id="password" name="password"></td>
+									</tr>
+
+								</table>
+
+								<div>
+			
+									<input class="btn btn-primary m-3" type="submit" id="boutonValider" value="Valider">
+			
+								</div>
+			
+							</form>
+			
+						</div>
+					
+					<!-- FIN SECTION CARD -->
+					</section>
+
+				</div>
+			
+			</div>
+
+		</div>
+
+	</body>
+
+</html>

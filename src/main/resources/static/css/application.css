@@ -1,0 +1,53 @@
+
+
+.formulaireUpload {
+    border: solid 0.1em black;
+    margin: 0.3%;
+}
+
+.listeFichiersUploades {
+    border: solid 0.1em black;
+    margin: 0.3%;
+}
+
+/* classe de base pour les messages utilisateurs. */
+.messageClass {
+    font-style: bold;
+    color: #000;
+    border: none;
+    margin: 0.3%;
+}
+
+/* classe de base pour les messages utilisateurs OK. */
+.messageOKclass {
+    font-style: bold;
+    color: rgb(16, 119, 33);
+    border: solid 0.1em black; 
+    margin: 0.3%;
+}
+
+/* classe de base pour les messages utilisateurs KO. */
+.messageKOclass {
+    font-style: bold;
+    color: rgb(241, 10, 10); 
+    border: solid 0.1em black;
+    margin: 0.3%;
+}
+
+.souligne {
+    text-decoration: underline;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+ 
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background: #edfbfc;
+    color: #000000;
+}

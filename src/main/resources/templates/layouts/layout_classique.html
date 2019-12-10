@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" 
+    	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+    <head>
+
+        <!-- fichier HTML encodé en UTF-8 -->
+        <meta charset="UTF-8" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+        <!-- compatibilité avec les anciennes versions d'Internet Explorer -->
+        <!--[if IE]>
+                <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+            <![endif]-->
+
+        <!--Description du contenu de la page-->
+        <meta name="description" content="accueil, ..." />
+
+        <!--Mots clé-->
+        <meta name="keywords" content="accueil, page accueil, ..." />
+
+        <!-- pour site responsive -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- lien vers CSS -->
+        <link rel="stylesheet" href="../../static/css/application.css" th:href="@{/css/application.css}" />
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" type="text/css" href="../../static/css/bootstrap.min.css"
+            th:href="@{/css/bootstrap.min.css}" />
+
+        <!-- titre de l'onglet -->
+        <title>layouts/fonds_youssfi_1.html</title>
+
+    </head>
+
+
+    <body>
+    		<header class="container-fluid">
+			
+				<div class="container">
+
+					<nav class="navbar  bg-light mb-3">
+			
+						<span class="navbar-brand mb-0 h1">BANQUE</span>
+						
+						<ul class="nav">
+						
+							<li class="nav-item">
+								<a class="nav-link" th:href="@{/}">Accueil</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" th:href="@{/MaBanqueController/mabanque}">MaBanque</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" th:href="@{/MaBanqueController/Clients}">Clients</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" th:href="@{/MaBanqueController/Comptes}">Comptes</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" th:href="@{/MaBanqueController/Operations}">Operations</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" th:href="@{/LoginController/getLoggedUserInSession}">User en session</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" th:href="@{/UserSpringController/versPageUserSpring}">Users</a>
+							</li>
+						
+						</ul>
+	
+						<ul class="nav justify-content-end">
+							<li class="nav-item">
+								<a class="nav-link" th:href="@{/LoginController/versLogin?logout}">Logout</a>
+							</li>
+						</ul>
+						
+					</nav>
+
+				</div>
+				
+			  
+           </header>
+
+           
+           <div class="container-fluid w-75">
+           
+           	   <!-- CONTENU MODIFIABLE DES PAGES DECORANTES INJECTE DANS CETTE SECTION -->
+	           <section layout:fragment="content">
+	
+	           </section>
+           
+           </div>
+           
+           
+
+			<footer class="fixed-bottom p-3 bg-secondary">
+			
+				<div class="container">
+					<small>Mon adresse</small>
+				</div>
+				
+			</footer>
+
+    </body>
+
+</html>

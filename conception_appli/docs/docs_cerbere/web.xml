@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" version="2.4"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>Cerbere test</display-name>
+    
+    <!-- déclaration du filtre Cerbère -->
+	<filter>
+		<filter-name>FiltreCerbere</filter-name>
+		<filter-class>i2.application.cerbere.filtre.FiltreCerbere</filter-class>
+        <!-- *** OBLIGATOIRE***  : identifiant de l'application tel que dans le
+             fichier de configuration XML
+         -->
+        <init-param>
+            <param-name>applicationId</param-name>
+            <param-value>restaurant</param-value>
+        </init-param> 
+        <!-- Facultatif : chemin du fichier de configuration XML.
+             Si absent, recherche de cerbere-filtre-bouchon.xml sous WEB-INF puis dans
+             le classpath.
+        -->
+        <init-param>
+            <param-name>conf</param-name>
+            <param-value>cerbere-filtre-bouchon.xml</param-value>
+        </init-param>
+        <!-- Facultatif : niveau de traces du filtre (défaut : ERROR) 
+             Valeurs possibles : DEV -> DEBUG -> INFO -> CONFIG -> ERRROR
+        -->
+        <init-param>
+            <param-name>log.niveau</param-name>
+            <param-value>info</param-value>
+        </init-param>
+        <!-- Facultatif : emplacement des traces (défaut : sortie standard) 
+             Valeurs possibles : nom de fichier ou "stdout"
+        -->
+        <init-param>
+            <param-name>log.fichiers</param-name>
+            <param-value>stdout</param-value>
+        </init-param>
+    </filter>
+    
+    <!-- association du filtre aux URL -->
+	<filter-mapping>
+		<filter-name>FiltreCerbere</filter-name>
+ 		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+</web-app>

@@ -1,0 +1,37 @@
+/*******************************************************************************
+ *                                                                             *
+ * CSS Styles for core infrastructure bits.  The .root section provides the    *
+ * overall default colors used by the rest of the sections.                    *
+ *                                                                             *
+ ******************************************************************************/
+
+
+/* # signifie id */
+#paneGenerateurMotif {
+	-fx-background-color: #ccffcc;
+}
+
+.gridpane {
+	
+    -fx-background-color: #8fbc8f;
+    
+    -fx-padding: 10;
+    
+    -fx-border-style: segments(0.166667em, 0.166667em);
+	-fx-border-width: 2;
+	-fx-border-insets: 5;
+	-fx-border-radius: 5;
+	-fx-border-color: blue;
+}
+
+.anchorpane {
+	-fx-background-color: #ffffff;
+}
+
+.error {
+	
+	-fx-text-fill:RED;
+	-fx-border-color: black;
+	-fx-background-color: WHITE;
+	-fx-padding: 3
+}

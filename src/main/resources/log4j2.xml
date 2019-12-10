@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Configuration name="DEV" status="ERROR">
+
+<!--    <Properties> -->
+<!--         <Property name="log-path">${bundle:configuration_ressources_externes:logs}</Property> -->
+<!--     </Properties> -->
+
+<!-- ======================================================= --> 
+<!-- 					NIVEAUX DE LOG 						 -->
+<!-- OFF > FATAL > ERROR > WARN > INFO > DEBUG > TRACE > ALL -->
+<!-- ======================================================= --> 
+
+	<Appenders>
+	
+		 <!-- Console Appender -->
+	    <Console name="Console" target="SYSTEM_OUT">
+	      <PatternLayout pattern="%d{yyyy-MMMM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n" />
+	    </Console>
+
+		 <!-- Console Appender -->
+	    <Console name="Console-allege" target="SYSTEM_OUT">
+<!-- 	      <PatternLayout pattern="%highlight{%d{YYYY-MM-dd HH:mm:ss} [%t] %-5level - %msg%n}" /> -->
+	      <PatternLayout pattern="%highlight{%d{YYYY-MM-dd HH:mm:ss} [%t] %-5level %logger{36} %msg}{bold,green}%n" />
+	    </Console>
+	    
+	    <!-- Console Appender -->
+<!-- 	    <Console name="Console" target="SYSTEM_OUT"> -->
+<!-- 			<PatternLayout pattern="%d{YYYY-MM-dd HH:mm:ss} [%t] %-5p %c{1}:%L - %msg%n" /> -->
+<!-- 		</Console> -->
+	    
+
+	    <!-- File Appender -->
+<!-- 	    <File name="File" fileName="c:/log/app.log"> -->
+<!-- 	      <PatternLayout pattern="%d{yyyy-MMM-dd HH:mm:ss a} [%t] %-5level %logger{36} - %msg%n" /> -->
+<!-- 	    </File> -->
+		
+ 		<!-- RollingFile Appender -->
+		<RollingFile name="RollingFile" filename="${bundle:configuration_ressources_externes:logs}/log4j2.log"
+			filepattern="${logPath}/%d{YYYYMMddHHmmss}-fargo.log">
+			<PatternLayout pattern="%d{yyyy-MMMM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n" />
+<!-- 			<PatternLayout pattern="%d{YYYY-MM-dd HH:mm:ss} [%t] %-5p %c{1}:%L - %msg%n" /> -->
+			<Policies>
+				<SizeBasedTriggeringPolicy size="100 MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="20" />
+		</RollingFile>
+		
+	</Appenders>
+
+
+<!-- ======================================================= --> 
+<!-- 					NIVEAUX DE LOG 						 -->
+<!-- OFF > FATAL > ERROR > WARN > INFO > DEBUG > TRACE > ALL -->
+<!-- ======================================================= --> 
+	
+	<Loggers>
+	    
+		<!-- =========================== -->
+		<!--         	ROOT 			-->		
+		<!-- =========================== -->	    	
+		<Root level="info">
+			<AppenderRef ref="Console" />
+			<AppenderRef ref="RollingFile" />
+		</Root>
+
+	    
+		<!-- =========================== -->
+		<!--         	APACHE	 		 -->		
+		<!-- =========================== -->	    	
+		<Logger name="org.apache" 
+			level="info" additivity="false">
+	      <AppenderRef ref="Console" />
+	      <AppenderRef ref="RollingFile" />
+	    </Logger>
+	    
+		<!-- =========================== -->
+		<!--         APACHE	TOMCAT 		 -->		
+		<!-- =========================== -->	    	
+		<Logger name="org.apache.tomcat" 
+			level="info" additivity="false">
+	      <AppenderRef ref="Console" />
+	      <AppenderRef ref="RollingFile" />
+	    </Logger>
+
+		<Logger name="org.apache.tomcat.util.digester.SetPropertiesRule" 
+			level="info" additivity="false">
+	      <AppenderRef ref="Console" />
+	      <AppenderRef ref="RollingFile" />
+	    </Logger>
+
+		<Logger name="org.apache.catalina" 
+			level="info" additivity="false">
+	      <AppenderRef ref="Console" />
+	      <AppenderRef ref="RollingFile" />
+	    </Logger>
+
+		<Logger name="org.apache.catalina.startup.VersionLoggerListener" 
+			level="info" additivity="false">
+	      <AppenderRef ref="Console" />
+	      <AppenderRef ref="RollingFile" />
+	    </Logger>
+
+
+		<Logger name="org.apache.jasper" 
+			level="info" additivity="false">
+	      <AppenderRef ref="Console" />
+	      <AppenderRef ref="RollingFile" />
+	    </Logger>
+	    
+	    
+		<!-- =========================== -->
+		<!--         SPRING		 		 -->		
+		<!-- =========================== -->
+		<!-- Log everything in SPRING -->	    		    
+	    <Logger name="org.springframework" level="info" additivity="false">
+	      <AppenderRef ref="Console" />
+	      <AppenderRef ref="RollingFile" />
+	    </Logger>
+
+		<!-- Log les tests JUnit exécutés sous SPRING -->
+		<!-- info permet de voir les traces des tests JUnit sous SPRING -->
+<!-- 		<Logger name="org.springframework.test.context" level="info" additivity="false"> -->
+		<Logger name="org.springframework.test.context" level="warn" additivity="false">
+	      <AppenderRef ref="Console" />
+	      <AppenderRef ref="RollingFile" />
+	    </Logger>
+
+		<!-- Log les configurations des BEANS SPRING -->
+		<!-- info permet de voir les traces des configurations des BEANS SPRING -->
+<!-- 		<Logger name="org.springframework.context.support" level="info" additivity="false"> -->
+		<Logger name="org.springframework.context.support" level="warn" additivity="false">
+	      <AppenderRef ref="Console" />
+	      <AppenderRef ref="RollingFile" />
+	    </Logger>
+
+	    
+		<!-- =========================== -->
+		<!--         HIBERNATE 			-->		
+		<!-- =========================== -->	    
+	    <!-- Log everything in hibernate -->
+	    <Logger name="org.hibernate" level="fatal" additivity="false">
+<!--  	    <Logger name="org.hibernate" level="info" additivity="false">  -->
+	      <AppenderRef ref="Console" />
+	      <AppenderRef ref="RollingFile" />
+	    </Logger>
+	
+	    <!-- Log SQL statements -->
+	    <Logger name="org.hibernate.SQL" level="fatal" additivity="false">
+	    <!-- debug permet de voir les actes sur la base comme les requêtes SQL, alter table if exists, drop constraint if exists, create table PUBLIC.ANNEESGESTION, ...-->
+<!-- 	    <Logger name="org.hibernate.SQL" level="debug" additivity="false"> -->
+		<!-- trace permet de voir les tous actes sur la base -->
+<!-- 	    <Logger name="org.hibernate.SQL" level="trace" additivity="false"> -->
+	      <AppenderRef ref="Console-allege" />
+<!-- 	      <AppenderRef ref="File" /> -->
+	    </Logger>
+
+	    <!-- Log JDBC bind parameters -->
+	    <Logger name="org.hibernate.type.descriptor.sql" level="debug" additivity="false">
+		<!-- trace permet de voir les Bindings d'Hibernate comme  [main] TRACE org.hibernate.type.descriptor.sql.BasicBinder - binding parameter [10] as [DATE] - [2017-01-01]-->
+<!-- 	    <Logger name="org.hibernate.type.descriptor.sql" level="trace" additivity="false"> -->
+	      <AppenderRef ref="Console" />
+<!-- 	      <AppenderRef ref="RollingFile" /> -->
+<!-- 	      <AppenderRef ref="File" /> -->
+	    </Logger>
+
+	    <!-- Log les statistiques HIBERNATE -->
+	    <Logger name="org.hibernate.engine.internal.StatisticalLoggingSessionEventListener" level="warn" additivity="false">
+		<!-- info permet de voir les STATISTIQUES d'Hibernate comme  [main] INFO  org.hibernate.engine.internal.StatisticalLoggingSessionEventListener - Session Metrics {12000 nanoseconds spent acquiring 1 JDBC connections; -->
+<!-- 	    <Logger name="org.hibernate.engine.internal.StatisticalLoggingSessionEventListener" level="info" additivity="false"> -->
+	      <AppenderRef ref="Console" />
+<!-- 	      <AppenderRef ref="RollingFile" /> -->
+<!-- 	      <AppenderRef ref="File" /> -->
+	    </Logger>
+
+
+		<!-- =========================== -->
+		<!--    javax.persistence 		 -->		
+		<!-- =========================== -->	    	    
+	    <Logger name="javax.persistence" level="trace" additivity="false>">
+	    	<AppenderRef ref="Console" />
+<!-- 	      <AppenderRef ref="File" /> -->	    
+	    </Logger>
+
+
+		<!-- =========================== -->
+		<!--    com.zaxxer.hikari 		 -->		
+		<!-- =========================== -->
+		<!-- info permet de voir les traces de la Base de Données HIKARI -->	    	    
+<!-- 	    <Logger name="com.zaxxer.hikari" level="info" additivity="false>"> -->
+	    <Logger name="com.zaxxer.hikari" level="TRACE" additivity="false>">
+	    	<AppenderRef ref="Console" />
+<!-- 	      <AppenderRef ref="File" /> -->	    
+	    </Logger>
+	
+
+		<!-- =========================== -->
+		<!--   PRESENTE APPLICATION		 -->		
+		<!-- =========================== -->	    	    	
+	    <!-- Log custom packages -->
+<!-- 	    <Logger name="levy.daniel.application" level="debug" additivity="false"> -->
+	    <Logger name="levy.daniel.application" level="fatal" additivity="false">
+	      <AppenderRef ref="Console" />
+	      <AppenderRef ref="RollingFile" />
+<!-- 	      <AppenderRef ref="File" /> -->
+	    </Logger>
+	    
+	    
+		
+	</Loggers>
+	
+</Configuration>

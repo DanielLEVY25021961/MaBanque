@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+<!-- ======================================================= --> 
+<!-- 					NIVEAUX DE LOG 						 -->
+<!-- OFF > FATAL > ERROR > WARN > INFO > DEBUG > TRACE > ALL -->
+<!-- ======================================================= --> 
+
+	<include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+	 <!-- Console Appender -->
+	<appender name="Console"
+	   class="ch.qos.logback.core.ConsoleAppender">
+	   <encoder>
+	     <pattern>
+	        %d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+	      </pattern>
+	    </encoder>
+	  </appender>
+
+
+		
+ 		<!-- RollingFile Appender -->
+	<property name="HOME_LOG" value="logs/logback.log"/>
+
+    <appender name="RollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${HOME_LOG}</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>logs/archived/app.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <!-- each archived file, size max 10MB -->
+            <maxFileSize>10MB</maxFileSize>
+            <!-- total size of all archive files, if total size > 20GB, it will delete old archived file -->
+            <totalSizeCap>20GB</totalSizeCap>
+            <!-- 60 days to keep -->
+            <maxHistory>60</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d %p %c{1.} [%t] %m%n</pattern>
+        </encoder>
+    </appender>
+		
+	
+
+
+<!-- ======================================================= --> 
+<!-- 					NIVEAUX DE LOG 						 -->
+<!-- OFF > FATAL > ERROR > WARN > INFO > DEBUG > TRACE > ALL -->
+<!-- ======================================================= --> 
+	
+
+	    
+		<!-- =========================== -->
+		<!--         	ROOT 			-->		
+		<!-- =========================== -->	    	
+		<root level="OFF">
+			<appender-ref ref="Console" />
+<!-- 	      <appender-ref ref="RollingFile" /> -->
+		</root>
+
+		<!-- =========================== -->
+		<!--         	LOGBACK	 		 -->		
+		<!-- =========================== -->	    	
+		<Logger name="ch.qos.logback" 
+			level="OFF" additivity="false">
+	      <appender-ref ref="Console" />
+<!-- 	      <appender-ref ref="RollingFile" /> -->
+	    </Logger>
+
+		<Logger name="c.q.l" 
+			level="OFF" additivity="false">
+	      <appender-ref ref="Console" />
+<!-- 	      <appender-ref ref="RollingFile" /> -->
+	    </Logger>
+	    
+		<!-- =========================== -->
+		<!--         	APACHE	 		 -->		
+		<!-- =========================== -->	    	
+		<Logger name="org.apache" 
+			level="WARN" additivity="false">
+	      <appender-ref ref="Console" />
+<!-- 	      <appender-ref ref="RollingFile" /> -->
+	    </Logger>
+	    
+		<!-- =========================== -->
+		<!--         APACHE	TOMCAT 		 -->		
+		<!-- =========================== -->	    	
+		<Logger name="org.apache.tomcat" 
+			level="WARN" additivity="false">
+	      <appender-ref ref="Console" />
+<!-- 	      <appender-ref ref="RollingFile" /> -->
+	    </Logger>
+
+		<Logger name="org.apache.tomcat.util.digester.SetPropertiesRule" 
+			level="WARN" additivity="false">
+	      <appender-ref ref="Console" />
+<!-- 	      <appender-ref ref="RollingFile" /> -->
+	    </Logger>
+
+		<Logger name="org.apache.catalina" 
+			level="WARN" additivity="false">
+	      <appender-ref ref="Console" />
+<!-- 	      <appender-ref ref="RollingFile" /> -->
+	    </Logger>
+
+		<Logger name="org.apache.catalina.startup.VersionLoggerListener" 
+			level="WARN" additivity="false">
+	      <appender-ref ref="Console" />
+<!-- 	      <appender-ref ref="RollingFile" /> -->
+	    </Logger>
+
+
+		<Logger name="org.apache.jasper" 
+			level="WARN" additivity="false">
+	      <appender-ref ref="Console" />
+<!-- 	      <appender-ref ref="RollingFile" /> -->
+	    </Logger>
+	    
+	    
+		<!-- =========================== -->
+		<!--         SPRING		 		 -->		
+		<!-- =========================== -->
+		<!-- Log everything in SPRING -->	    		    
+	    <Logger name="org.springframework" level="INFO" additivity="false">
+	      	<appender-ref ref="Console" />
+	      <!-- <appender-ref ref="RollingFile" /> -->
+	    </Logger>
+
+		<logger name="org.springframework.boot" level="INFO" additivity="false">
+		  	<appender-ref ref="Console" />
+		</logger>
+		
+		<logger name="org.springframework.boot.SpringApplication" level="DEBUG" additivity="false">
+  			<appender-ref ref="Console" />
+		</logger>
+
+		<!-- Log les tests JUnit exécutés sous SPRING -->
+		<!-- info permet de voir les traces des tests JUnit sous SPRING -->
+<!-- 		<Logger name="org.springframework.test.context" level="info" additivity="false"> -->
+		<Logger name="org.springframework.test.context" level="WARN" additivity="false">
+	      <appender-ref ref="Console" />
+	      <!-- <appender-ref ref="RollingFile" /> -->
+	    </Logger>
+
+		<!-- Log les configurations des BEANS SPRING -->
+		<!-- info permet de voir les traces des configurations des BEANS SPRING -->
+<!-- 		<Logger name="org.springframework.context.support" level="info" additivity="false"> -->
+		<Logger name="org.springframework.context.support" level="WARN" additivity="false">
+	      <appender-ref ref="Console" />
+	      <!-- <appender-ref ref="RollingFile" /> -->
+	    </Logger>
+
+	    
+		<!-- =========================== -->
+		<!--         HIBERNATE 			-->		
+		<!-- =========================== -->	    
+	    <!-- Log everything in hibernate -->
+	    <Logger name="org.hibernate" level="OFF" additivity="false">
+<!--  	    <Logger name="org.hibernate" level="info" additivity="false">  -->
+	      <appender-ref ref="Console" />
+<!-- 	      <appender-ref ref="RollingFile" /> -->
+	    </Logger>
+	    
+	    <Logger name="org.hibernate.type" level="OFF" additivity="false">
+<!--  	    <Logger name="org.hibernate" level="info" additivity="false">  -->
+	      <appender-ref ref="Console" />
+<!-- 	      <appender-ref ref="RollingFile" /> -->
+	    </Logger>
+	    
+	    <Logger name="org.hibernate.mapping" level="OFF" additivity="false">
+<!--  	    <Logger name="org.hibernate" level="info" additivity="false">  -->
+	      <appender-ref ref="Console" />
+<!-- 	      <appender-ref ref="RollingFile" /> -->
+	    </Logger>
+	    
+	    <Logger name="org.hibernate.mapping.PrimaryKey" level="OFF" additivity="false">
+<!--  	    <Logger name="org.hibernate" level="info" additivity="false">  -->
+	      <appender-ref ref="Console" />
+<!-- 	      <appender-ref ref="RollingFile" /> -->
+	    </Logger>
+	    
+	    <Logger name="o.h" level="OFF" additivity="false">
+<!--  	    <Logger name="org.hibernate" level="info" additivity="false">  -->
+	      <appender-ref ref="Console" />
+<!-- 	      <appender-ref ref="RollingFile" /> -->
+	    </Logger>
+	    	    
+	    <Logger name="o.h.i.f.i" level="OFF" additivity="false">
+<!--  	    <Logger name="org.hibernate" level="info" additivity="false">  -->
+	      <appender-ref ref="Console" />
+<!-- 	      <appender-ref ref="RollingFile" /> -->
+	    </Logger>
+	    
+	    <Logger name="o.h.e.j.e.i" level="FATAL" additivity="false">
+<!--  	    <Logger name="org.hibernate" level="info" additivity="false">  -->
+	      <appender-ref ref="Console" />
+<!-- 	      <appender-ref ref="RollingFile" /> -->
+	    </Logger>
+	    	    	    
+	    
+	    
+	    <Logger name="o.h.b.internal" level="FATAL" additivity="false">
+<!--  	    <Logger name="org.hibernate" level="info" additivity="false">  -->
+	      <appender-ref ref="Console" />
+<!-- 	      <appender-ref ref="RollingFile" /> -->
+	    </Logger>
+	    	    
+	    <Logger name="o.h.v.m" level="FATAL" additivity="false">
+<!--  	    <Logger name="org.hibernate" level="info" additivity="false">  -->
+	      <appender-ref ref="Console" />
+<!-- 	      <appender-ref ref="RollingFile" /> -->
+	    </Logger>	    
+
+	    <Logger name="o.h.v.i.engine" level="FATAL" additivity="false">
+<!--  	    <Logger name="org.hibernate" level="info" additivity="false">  -->
+	      <appender-ref ref="Console" />
+<!-- 	      <appender-ref ref="RollingFile" /> -->
+	    </Logger>
+
+	    <Logger name="o.h.v.i.engine.ConfigurationImpl" level="OFF" additivity="false">
+<!--  	    <Logger name="org.hibernate" level="info" additivity="false">  -->
+	      <appender-ref ref="Console" />
+<!-- 	      <appender-ref ref="RollingFile" /> -->
+	    </Logger>
+	    
+	    <Logger name="o.h.v.i.e.r.TraversableResolvers" level="OFF" additivity="false">
+<!--  	    <Logger name="org.hibernate" level="info" additivity="false">  -->
+	      <appender-ref ref="Console" />
+<!-- 	      <appender-ref ref="RollingFile" /> -->
+	    </Logger>
+	    
+	    <Logger name="o.h.v.m.ResourceBundleMessageInterpolator" level="OFF" additivity="false">
+<!--  	    <Logger name="org.hibernate" level="info" additivity="false">  -->
+	      <appender-ref ref="Console" />
+<!-- 	      <appender-ref ref="RollingFile" /> -->
+	    </Logger>
+	    
+	    <Logger name="o.h.v.i.engine.ValidatorFactoryImpl" level="OFF" additivity="false">
+<!--  	    <Logger name="org.hibernate" level="info" additivity="false">  -->
+	      <appender-ref ref="Console" />
+<!-- 	      <appender-ref ref="RollingFile" /> -->
+	    </Logger>
+	    
+	    <Logger name="o.h.v.i.x.config.ValidationXmlParser" level="OFF" additivity="false">
+<!--  	    <Logger name="org.hibernate" level="info" additivity="false">  -->
+	      <appender-ref ref="Console" />
+<!-- 	      <appender-ref ref="RollingFile" /> -->
+	    </Logger>
+	    
+	    <Logger name="o.h.v.i.x.c.ResourceLoaderHelper" level="OFF" additivity="false">
+<!--  	    <Logger name="org.hibernate" level="info" additivity="false">  -->
+	      <appender-ref ref="Console" />
+<!-- 	      <appender-ref ref="RollingFile" /> -->
+	    </Logger>
+	    	    	 
+	    <Logger name="o.h.i.internal" level="FATAL" additivity="false">
+<!--  	    <Logger name="org.hibernate" level="info" additivity="false">  -->
+	      <appender-ref ref="Console" />
+<!-- 	      <appender-ref ref="RollingFile" /> -->
+	    </Logger>
+	    
+	    <Logger name="o.h.c.i" level="FATAL" additivity="false">
+<!--  	    <Logger name="org.hibernate" level="info" additivity="false">  -->
+	      <appender-ref ref="Console" />
+<!-- 	      <appender-ref ref="RollingFile" /> -->
+	    </Logger>
+	    	    	 	    	    	
+	    <!-- Log SQL statements -->
+	    <Logger name="org.hibernate.SQL" level="FATAL" additivity="false">
+	    <!-- debug permet de voir les actes sur la base comme les requêtes SQL, alter table if exists, drop constraint if exists, create table PUBLIC.ANNEESGESTION, ...-->
+<!-- 	    <Logger name="org.hibernate.SQL" level="debug" additivity="false"> -->
+		<!-- trace permet de voir les tous actes sur la base -->
+<!-- 	    <Logger name="org.hibernate.SQL" level="trace" additivity="false"> -->
+	      <appender-ref ref="Console" />
+<!-- 	      <appender-ref ref="File" /> -->
+	    </Logger>
+
+	    <!-- Log JDBC bind parameters -->
+	    <Logger name="org.hibernate.type.descriptor.sql" level="WARN" additivity="false">
+		<!-- trace permet de voir les Bindings d'Hibernate comme  [main] TRACE org.hibernate.type.descriptor.sql.BasicBinder - binding parameter [10] as [DATE] - [2017-01-01]-->
+<!-- 	    <Logger name="org.hibernate.type.descriptor.sql" level="trace" additivity="false"> -->
+	      <appender-ref ref="Console" />
+<!-- 	      <appender-ref ref="RollingFile" /> -->
+<!-- 	      <appender-ref ref="File" /> -->
+	    </Logger>
+
+	    <!-- Log les statistiques HIBERNATE -->
+	    <Logger name="org.hibernate.engine.internal.StatisticalLoggingSessionEventListener" level="WARN" additivity="false">
+		<!-- info permet de voir les STATISTIQUES d'Hibernate comme  [main] INFO  org.hibernate.engine.internal.StatisticalLoggingSessionEventListener - Session Metrics {12000 nanoseconds spent acquiring 1 JDBC connections; -->
+<!-- 	    <Logger name="org.hibernate.engine.internal.StatisticalLoggingSessionEventListener" level="info" additivity="false"> -->
+	      <appender-ref ref="Console" />
+<!-- 	      <appender-ref ref="RollingFile" /> -->
+<!-- 	      <appender-ref ref="File" /> -->
+	    </Logger>
+
+
+		<!-- =========================== -->
+		<!--    javax.persistence 		 -->		
+		<!-- =========================== -->	    	    
+	    <Logger name="javax.persistence" level="WARN" additivity="false>">
+	    	<appender-ref ref="Console" />
+<!-- 	      <appender-ref ref="RollingFile" /> -->	    
+	    </Logger>
+
+
+		<!-- =========================== -->
+		<!--    com.zaxxer.hikari 		 -->		
+		<!-- =========================== -->
+		<!-- info permet de voir les traces de la Base de Données HIKARI -->	    	    
+<!-- 	    <Logger name="com.zaxxer.hikari" level="info" additivity="false>"> -->
+	    <Logger name="com.zaxxer.hikari" level="WARN" additivity="false>">
+	    	<appender-ref ref="Console" />
+<!-- 	      <appender-ref ref="RollingFile" /> -->	    
+	    </Logger>
+	
+
+		<!-- =========================== -->
+		<!--   PRESENTE APPLICATION		 -->		
+		<!-- =========================== -->	    	    	
+	    <!-- Log custom packages -->
+<!-- 	    <Logger name="levy.daniel.application" level="debug" additivity="false"> -->
+	    <Logger name="levy.daniel.application" level="WARN" additivity="false">
+	      <appender-ref ref="Console" />
+<!-- 	      <appender-ref ref="RollingFile" /> -->
+	    </Logger>
+	    
+	    
+		
+
+	
+
+</configuration>
