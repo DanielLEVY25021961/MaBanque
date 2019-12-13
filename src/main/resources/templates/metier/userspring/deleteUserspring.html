@@ -87,7 +87,7 @@
                         <!-- DEBUT DIV LISTE USERS STOCKES -->
                         <div>
 
-                            <h2 class="mt-5 ml-3"><u>Liste des USERS déjà en base : </u></h2>
+                            <h2 class="mt-5 ml-3 souligne">Liste des USERS déjà en base : </h2>
 
                             <!-- DEBUT DIV MESSAGE UTILISATEUR CIRCONSTANCIE -->
                             <div th:if="${messageDestruction}" th:classappend="${reponseServiceDestruction} ? messageOKclass : messageKOclass">
@@ -101,15 +101,15 @@
 
                                 <table class="table table-striped mt-5">
 
-                                    <head>
+                                    <thead>
     
                                         <tr>
                                             <th>username</th><th>password</th><th>actif</th><th>Rôles</th><th>ACTION</th>
                                         </tr>
     
-                                    </head>
+                                    </thead>
     
-                                    <body>
+                                    <tbody>
 
                                         <tr th:each="user : ${listeObjetsDansPage}">
 
@@ -125,7 +125,7 @@
 
                                         </tr>
                                          
-                                    </body>
+                                    </tbody>
     
                                 </table>
 
@@ -135,12 +135,12 @@
                         </div>
 
                         <!-- DEBUT DIV PAGINATION -->
-                        <div class="container-fluid" th:if="${pages}">
+                        <div class="container-fluid" th:if="${numerosPagesUserSpring}">
 
                             <ul class="nav nav-pills">
-                                <li class="nav-item" th:each="page, status : ${pages}">
+                                <li class="nav-item" th:each="numeroPageUserSpring, status : ${numerosPagesUserSpring}">
                                     <a class="nav-link text-white bg-primary m-3" th:text="${status.index} + 1" 
-                                        th:href="@{/UserSpringController/versPageDeleteUserSpring(username=${username}, page=${status.index})}">index</a>
+                                        th:href="@{/UserSpringController/versPageDeleteUserSpring(username=${username}, numeroPageUserSpring=${status.index})}">index</a>
                                 </li>
                             </ul>
 

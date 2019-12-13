@@ -178,7 +178,7 @@ public class RoleEntityJPA implements Serializable {
 			builder.append(IConstantesApplicatives.NULL);
 		}
 		
-		builder.append("]");
+		builder.append(']');
 		
 		return builder.toString();
 		

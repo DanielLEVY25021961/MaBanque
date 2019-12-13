@@ -71,7 +71,12 @@ public class LigneRapport implements Serializable, Comparable<LigneRapport>
 	 */
 	public static final String METHODE_COMPARE 
 		= "Méthode Compare(Object pObj)";
-		
+	
+	/**
+	 * "sans objet".
+	 */
+	public static final String SANS_OBJET = "sans objet";
+	
 	/**
 	 * Identifiant en base de l'objet métier.<br/>
 	 */
@@ -1042,7 +1047,7 @@ public class LigneRapport implements Serializable, Comparable<LigneRapport>
 	 * {@inheritDoc}
 	 */
 	@Override
-	public final Object clone() throws CloneNotSupportedException {
+	public final LigneRapport clone() throws CloneNotSupportedException {
 		
 		final LigneRapport clone = (LigneRapport) super.clone();
 		
@@ -1277,7 +1282,7 @@ public class LigneRapport implements Serializable, Comparable<LigneRapport>
 		
 		/* numeroLigne. */
 		if (this.numeroLigne == null) {
-			stb.append("sans objet");
+			stb.append(SANS_OBJET);
 		}
 		else {
 			stb.append(this.numeroLigne);
@@ -1290,7 +1295,7 @@ public class LigneRapport implements Serializable, Comparable<LigneRapport>
 		
 		/* ordreChamp. */
 		if (this.ordreChamp == null) {
-			stb.append("sans objet");
+			stb.append(SANS_OBJET);
 		}
 		else {
 			stb.append(this.ordreChamp);
@@ -1470,7 +1475,7 @@ public class LigneRapport implements Serializable, Comparable<LigneRapport>
 			
 		case 9:
 			if (this.numeroLigne == null) {
-				valeur = "sans objet";
+				valeur = SANS_OBJET;
 			}
 			else {
 				valeur = this.numeroLigne;
@@ -1483,7 +1488,7 @@ public class LigneRapport implements Serializable, Comparable<LigneRapport>
 			
 		case 11:
 			if (this.ordreChamp == null) {
-				valeur = "sans objet";
+				valeur = SANS_OBJET;
 			}
 			else {
 				valeur = this.ordreChamp;

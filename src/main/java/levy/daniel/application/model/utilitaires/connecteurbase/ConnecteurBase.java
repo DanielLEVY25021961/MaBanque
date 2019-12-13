@@ -112,7 +112,9 @@ public class ConnecteurBase {
 			
 		} catch (SQLException e) {
 			
-			e.printStackTrace();
+			if (LOG.isDebugEnabled()) {
+				LOG.debug(e);
+			}
 			
 			return false;
 			

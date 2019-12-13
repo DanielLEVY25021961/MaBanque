@@ -343,7 +343,11 @@ public final class SocketClient {
 			System.out.println("Adresse socket de l'hôte distant : " + socketProxy.getRemoteSocketAddress());
 
 		} catch (IOException e) {
-			e.printStackTrace();
+			
+			if (LOG.isDebugEnabled()) {
+				LOG.debug(e);
+			}
+
 		} finally {			
 			socketProxy.close();
 		}

@@ -192,7 +192,7 @@ public class CompteCourantEntityJPA extends AbstractCompteEntityJPA {
 		builder.append("decouvertAutorise=");
 		builder.append(this.getDecouvertAutorise());
 		
-		builder.append("]");
+		builder.append(']');
 		
 		return builder.toString();
 

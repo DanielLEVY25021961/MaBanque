@@ -136,7 +136,7 @@ public class UploadServiceResponse {
 			builder.append(IConstantesApplicatives.NULL);
 		}
 		
-		builder.append("]");
+		builder.append(']');
 		
 		return builder.toString();
 		

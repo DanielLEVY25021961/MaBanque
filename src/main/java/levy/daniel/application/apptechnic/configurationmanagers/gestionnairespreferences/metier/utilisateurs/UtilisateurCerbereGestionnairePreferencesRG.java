@@ -127,6 +127,16 @@ public final class UtilisateurCerbereGestionnairePreferencesRG {
 	 */
 	public static final char EGAL = '=';
 
+	/**
+	 * "true".
+	 */
+	public static final String TRUE = "true";
+	
+	/**
+	 * "false".
+	 */
+	public static final String FALSE = "false";
+
 	// RGs ***************************************************
 	/**
 	 * clé de validerRGUtilisateurCivilite dans 
@@ -144,7 +154,7 @@ public final class UtilisateurCerbereGestionnairePreferencesRG {
 	 * "false".<br/>
 	 */
 	public static final String STRING_VALIDER_UTILISATEUR_CIVILITE_EN_DUR 
-		= "false";
+		= FALSE;
 	
 	/**
 	 * clé de validerRGUtilisateurCiviliteRenseigne01 dans 
@@ -163,7 +173,7 @@ public final class UtilisateurCerbereGestionnairePreferencesRG {
 	 * "false".<br/>
 	 */
 	public static final String STRING_VALIDER_UTILISATEUR_CIVILITE_RENSEIGNE_01_EN_DUR 
-		= "false";
+		= FALSE;
 		
 	/**
 	 * clé de validerRGUtilisateurCiviliteLitteral02 dans 
@@ -182,7 +192,7 @@ public final class UtilisateurCerbereGestionnairePreferencesRG {
 	 * "false".<br/>
 	 */
 	public static final String STRING_VALIDER_UTILISATEUR_CIVILITE_LITTERAL_02_EN_DUR 
-		= "false";
+		= FALSE;
 		
 	/**
 	 * clé de validerRGUtilisateurCiviliteLongueur03 dans 
@@ -201,7 +211,7 @@ public final class UtilisateurCerbereGestionnairePreferencesRG {
 	 * "false".<br/>
 	 */
 	public static final String STRING_VALIDER_UTILISATEUR_CIVILITE_LONGUEUR_03_EN_DUR 
-		= "false";
+		= FALSE;
 		
 	/**
 	 * clé de validerRGUtilisateurCiviliteNomenclature04 dans 
@@ -220,7 +230,7 @@ public final class UtilisateurCerbereGestionnairePreferencesRG {
 	 * "false".<br/>
 	 */
 	public static final String STRING_VALIDER_UTILISATEUR_CIVILITE_NOMENCLATURE_04_EN_DUR 
-		= "false";
+		= FALSE;
 		
 	/**
 	 * clé de validerRGUtilisateurPrenom dans 
@@ -238,7 +248,7 @@ public final class UtilisateurCerbereGestionnairePreferencesRG {
 	 * "true".<br/>
 	 */
 	public static final String STRING_VALIDER_UTILISATEUR_PRENOM_EN_DUR 
-		= "true";
+		= TRUE;
 	
 	/**
 	 * clé de validerRGUtilisateurPrenomRenseigne01 dans 
@@ -257,7 +267,7 @@ public final class UtilisateurCerbereGestionnairePreferencesRG {
 	 * "true".<br/>
 	 */
 	public static final String STRING_VALIDER_UTILISATEUR_PRENOM_RENSEIGNE_01_EN_DUR 
-		= "true";
+		= TRUE;
 		
 	/**
 	 * clé de validerRGUtilisateurPrenomLitteral02 dans 
@@ -276,7 +286,7 @@ public final class UtilisateurCerbereGestionnairePreferencesRG {
 	 * "true".<br/>
 	 */
 	public static final String STRING_VALIDER_UTILISATEUR_PRENOM_LITTERAL_02_EN_DUR 
-		= "true";
+		= TRUE;
 		
 	/**
 	 * clé de validerRGUtilisateurPrenomLongueur03 dans 
@@ -295,7 +305,7 @@ public final class UtilisateurCerbereGestionnairePreferencesRG {
 	 * "true".<br/>
 	 */
 	public static final String STRING_VALIDER_UTILISATEUR_PRENOM_LONGUEUR_03_EN_DUR 
-		= "true";
+		= TRUE;
 		
 	/**
 	 * clé de validerRGUtilisateurNom dans 
@@ -313,7 +323,7 @@ public final class UtilisateurCerbereGestionnairePreferencesRG {
 	 * "true".<br/>
 	 */
 	public static final String STRING_VALIDER_UTILISATEUR_NOM_EN_DUR 
-		= "true";
+		= TRUE;
 	
 	/**
 	 * clé de validerRGUtilisateurNomRenseigne01 dans 
@@ -332,7 +342,7 @@ public final class UtilisateurCerbereGestionnairePreferencesRG {
 	 * "true".<br/>
 	 */
 	public static final String STRING_VALIDER_UTILISATEUR_NOM_RENSEIGNE_01_EN_DUR 
-		= "true";
+		= TRUE;
 		
 	/**
 	 * clé de validerRGUtilisateurNomLitteral02 dans 
@@ -351,7 +361,7 @@ public final class UtilisateurCerbereGestionnairePreferencesRG {
 	 * "true".<br/>
 	 */
 	public static final String STRING_VALIDER_UTILISATEUR_NOM_LITTERAL_02_EN_DUR 
-		= "true";
+		= TRUE;
 		
 	/**
 	 * clé de validerRGUtilisateurNomLongueur03 dans 
@@ -370,7 +380,7 @@ public final class UtilisateurCerbereGestionnairePreferencesRG {
 	 * "true".<br/>
 	 */
 	public static final String STRING_VALIDER_UTILISATEUR_NOM_LONGUEUR_03_EN_DUR 
-		= "true";
+		= TRUE;
 				
 	/**
 	 * java.util.Properties encapsulant les préférences.<br/>

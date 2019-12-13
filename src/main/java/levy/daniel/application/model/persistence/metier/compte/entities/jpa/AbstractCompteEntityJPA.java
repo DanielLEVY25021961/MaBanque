@@ -223,7 +223,7 @@ public abstract class AbstractCompteEntityJPA implements Serializable {
 			builder.append(IConstantesApplicatives.NULL);
 		}
 		
-		builder.append("]");
+		builder.append(']');
 		
 		return builder.toString();
 		

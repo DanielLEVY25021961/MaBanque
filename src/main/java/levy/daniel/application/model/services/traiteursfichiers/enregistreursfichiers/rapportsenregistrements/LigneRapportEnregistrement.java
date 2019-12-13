@@ -653,7 +653,8 @@ public class LigneRapportEnregistrement  implements
 	 * {@inheritDoc}
 	 */
 	@Override
-	public final Object clone() throws CloneNotSupportedException {
+	public final LigneRapportEnregistrement clone() 
+					throws CloneNotSupportedException {
 		
 		final LigneRapportEnregistrement clone 
 			= (LigneRapportEnregistrement) super.clone();

@@ -40,7 +40,7 @@ import levy.daniel.application.apptechnic.exceptions.technical.impl.ExceptionTec
  * @since 2 nov. 2019
  *
  */
-public class GestionnaireUploadsService {
+public final class GestionnaireUploadsService {
 
 	// ************************ATTRIBUTS************************************/
 
@@ -329,7 +329,7 @@ public class GestionnaireUploadsService {
 	 * 
 	 * @return : String : pour affichage.<br/>
 	 */
-	public static final String afficherListeString(
+	public static String afficherListeString(
 			final List<String> pList) {
 		
 		/* retourne null si pList == null. */

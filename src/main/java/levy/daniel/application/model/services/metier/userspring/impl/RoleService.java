@@ -24,7 +24,7 @@ import levy.daniel.application.model.services.metier.userspring.IRoleService;
  * <br/>
  *
  * - Exemple d'utilisation :<br/>
- *<br/>
+ * <br/>
  * 
  * - Mots-clé :<br/>
  * <br/>
@@ -38,113 +38,103 @@ import levy.daniel.application.model.services.metier.userspring.IRoleService;
  * @since 28 nov. 2019
  *
  */
-@Service(value="RoleService")
+@Service(value = "RoleService")
 @Transactional
 public class RoleService implements IRoleService {
 
 	// ************************ATTRIBUTS************************************/
-	
+
 	/**
 	 * RoleDao injecté par SPRING.
 	 */
 	@Autowired
-	@Qualifier(value="RoleDao")
+	@Qualifier(value = "RoleDao")
 	private RoleDao roleDao;
 
 	/**
-	 * LOG : Log : 
-	 * Logger pour Log4j (utilisant commons-logging).
+	 * LOG : Log : Logger pour Log4j (utilisant commons-logging).
 	 */
 	@SuppressWarnings("unused")
 	private static final Log LOG = LogFactory.getLog(RoleService.class);
 
 	// *************************METHODES************************************/
-	
-	
-	 /**
+
+	/**
 	 * CONSTRUCTEUR D'ARITE NULLE.
 	 */
 	public RoleService() {
 		super();
 	} // Fin de CONSTRUCTEUR D'ARITE NULLE.________________________________
-	
 
-	
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public RoleEntityJPA loadRoleByRolename(final String pRolename) 
-			throws ObjetManquantRunTimeException {
-		
+	public RoleEntityJPA loadRoleByRolename(final String pRolename) throws ObjetManquantRunTimeException {
+
 		/* jette une ObjetManquantRunTimeException si pRolename est blank. */
 		if (StringUtils.isBlank(pRolename)) {
-			
+
 			final String messageBadRolename = "pRolename ne peut être blank";
 			throw new ObjetManquantRunTimeException(messageBadRolename);
 		}
-		
-		final String messageKO 
-			= "Objet métier introuvable dans le stockage : " + pRolename;
-		
+
+		final String messageKO = "Objet métier introuvable dans le stockage : " + pRolename;
+
 		RoleEntityJPA roleEntityJPA = null;
-		
+
 		try {
-			
-			/* délègue au DAO la tâche de trouver l'objet métier
-			 *  dans le stockage. */
-			roleEntityJPA 
-				= this.roleDao.findByRole(pRolename);
-			
+
+			/*
+			 * délègue au DAO la tâche de trouver l'objet métier dans le stockage.
+			 */
+			roleEntityJPA = this.roleDao.findByRole(pRolename);
+
 		} catch (Exception e) {
-			
-			/* jette une ObjetManquantRunTimeException si l'objet métier 
-			 * ne peut être trouvé dans le stockage. */
+
+			/*
+			 * jette une ObjetManquantRunTimeException si l'objet métier ne peut être trouvé
+			 * dans le stockage.
+			 */
 			throw new ObjetManquantRunTimeException(messageKO);
 		}
-		
+
 		if (roleEntityJPA == null) {
-			
-			/* jette une ObjetManquantRunTimeException si l'objet métier 
-			 * ne peut être trouvé dans le stockage. */
+
+			/*
+			 * jette une ObjetManquantRunTimeException si l'objet métier ne peut être trouvé
+			 * dans le stockage.
+			 */
 			throw new ObjetManquantRunTimeException(messageKO);
 		}
-		
+
 		/* retourne l'objet métier trouvé dans le stockage. */
 		return roleEntityJPA;
-		
-	} //Fin de loadRoleByRolename(...).____________________________________
-	
-	
-	
+
+	} // Fin de loadRoleByRolename(...).____________________________________
+
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Page<RoleEntityJPA> listerUsersParPage(
-			int pNumeroPage, int pTaillePage) {
-		
-		final Page<RoleEntityJPA> page 
-			= this.roleDao.findAll(PageRequest.of(pNumeroPage, pTaillePage));
-		
+	public Page<RoleEntityJPA> listerUsersParPage(final int pNumeroPage, final int pTaillePage) {
+
+		final Page<RoleEntityJPA> page = this.roleDao.findAll(PageRequest.of(pNumeroPage, pTaillePage));
+
 		return page;
-			
+
 	} // Fin de listerUsersParPage(...)._____________________________________
-	
-	
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
 	public List<RoleEntityJPA> listAll() {
-		
+
 		final List<RoleEntityJPA> resultat = this.roleDao.findAll();
-		
+
 		return resultat;
-				
+
 	} // Fin de listAll()._________________________________________________
-	
-	
-	
+
 } // FIN DE LA CLASSE RoleService.-------------------------------------------

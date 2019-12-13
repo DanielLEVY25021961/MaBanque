@@ -193,7 +193,7 @@ public class CompteEpargneEntityJPA extends AbstractCompteEntityJPA {
 		builder.append("taux=");
 		builder.append(this.getTaux());
 		
-		builder.append("]");
+		builder.append(']');
 		
 		return builder.toString();
 

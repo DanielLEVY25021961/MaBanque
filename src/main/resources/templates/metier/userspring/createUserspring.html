@@ -139,18 +139,21 @@
         
                                                 <tr>
         
-                                                    <td><label for="rolesChoisis">Selectionnez le(s) ROLE(s) dans la liste déroulante : </label></td>
                                                     <td>
-                                                        <select multiple name="rolesChoisis" id="rolesChoisis" class="form-control">rôles dans le stockage
-        
-                                                            <div th:each="role : ${roles}">
-                                                                <option th:value="${role.role}" th:text="${role.role}">rôle choisi</option>
-                                                            </div>
-                                                            
-                                                        </select>
+                                                    	<label for="rolesChoisis">Selectionnez le(s) ROLE(s) dans la liste déroulante : </label>
                                                     </td>
-        
-                                                </tr>
+
+												<td>
+													<select multiple name="rolesChoisis"
+													id="rolesChoisis" class="form-control">
+
+														<option th:each="role : ${roles}" th:value="${role.role}"
+															th:text="${role.role}">rôle choisi</option>
+
+													</select>
+												</td>
+
+											</tr>
         
                                                 <tr>
     
@@ -188,15 +191,15 @@
 
                                 <table class="table table-striped">
 
-                                    <head>
+                                    <thead>
     
                                         <tr>
                                             <th>username</th><th>password</th><th>actif</th><th>Rôles</th>
                                         </tr>
     
-                                    </head>
+                                    </thead>
     
-                                    <body>
+                                    <tbody>
 
                                         <tr th:each="user : ${listeObjetsDansPage}">
 
@@ -209,7 +212,7 @@
 
                                         </tr>
                                          
-                                    </body>
+                                    </tbody>
     
                                 </table>
 
@@ -219,12 +222,12 @@
                         </div>
 
                         <!-- DEBUT DIV PAGINATION -->
-                        <div class="container-fluid" th:if="${pages}">
+                        <div class="container-fluid" th:if="${numerosPagesUserSpring}">
 
                             <ul class="nav nav-pills">
-                                <li class="nav-item" th:each="page, status : ${pages}">
+                                <li class="nav-item" th:each="numeroPageUserSpring, status : ${numerosPagesUserSpring}">
                                     <a class="nav-link text-white bg-primary m-3" th:text="${status.index} + 1" 
-                                        th:href="@{/UserSpringController/versPageCreateUserSpring(page=${status.index})}">index</a>
+                                        th:href="@{/UserSpringController/versPageCreateUserSpring(numeroPageUserSpring=${status.index})}">index</a>
                                 </li>
                             </ul>
 

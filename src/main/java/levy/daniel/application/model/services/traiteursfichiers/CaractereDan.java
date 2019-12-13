@@ -589,7 +589,7 @@ public class CaractereDan implements
 	 * {@inheritDoc}
 	 */
 	@Override
-	public final Object clone() throws CloneNotSupportedException {
+	public final CaractereDan clone() throws CloneNotSupportedException {
 		
 		final CaractereDan clone = (CaractereDan) super.clone();
 		

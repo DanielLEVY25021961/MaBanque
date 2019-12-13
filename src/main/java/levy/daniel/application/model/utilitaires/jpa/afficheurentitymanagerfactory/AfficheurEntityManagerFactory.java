@@ -167,8 +167,11 @@ public final class AfficheurEntityManagerFactory {
 				myDataSource = MyDataSourceFactory.getMyDataSource(dataSource);
 			} catch (NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException
 					| IllegalArgumentException | InvocationTargetException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				
+				if (LOG.isDebugEnabled()) {
+					LOG.debug(e);
+				}
+				
 			}
 			
 			if (myDataSource != null) {

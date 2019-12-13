@@ -7,10 +7,10 @@ import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.TreeMap;
-import java.util.Map.Entry;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -129,6 +129,17 @@ public class CopieurConceptService implements ICopieurConceptService {
 	 */
 	public static final String LE_FILE_DESIGNE_PAR 
 		= "le File désigné par ";
+	
+	/**
+	 * " n'existe pas dans le stockage."
+	 */
+	public static final String PAS_DANS_STOCKAGE 
+		= " n'existe pas dans le stockage.";
+
+	/**
+	 * "impl".
+	 */
+	public static final String IMPL = "impl";
 	
 	/**
 	 * LOG : Log : 
@@ -848,7 +859,7 @@ public class CopieurConceptService implements ICopieurConceptService {
 				+ " - Méthode fournirConceptMetierSource(...) - " 
 				+ "le package " 
 				+ pathObjetMetierSource 
-				+ " n'existe pas dans le stockage.";
+				+ PAS_DANS_STOCKAGE;
 			
 			if (LOG.isFatalEnabled()) {
 				LOG.fatal(message);
@@ -961,7 +972,7 @@ public class CopieurConceptService implements ICopieurConceptService {
 		= ArboresceurProjetSource
 			.getCoucheModelMetierTestPath()
 			.resolve(pNomConcept)
-			.resolve("impl")
+			.resolve(IMPL)
 			.resolve(this.mettrePremiereLettreEnMajuscule(pNomConcept) + "Test.java")
 			.toAbsolutePath().normalize();
 		
@@ -975,7 +986,7 @@ public class CopieurConceptService implements ICopieurConceptService {
 				+ " - Méthode fournirTestConceptMetierSource(...) - " 
 				+ "le fichier " 
 				+ pathTestObjetMetierSource 
-				+ " n'existe pas dans le stockage.";
+				+ PAS_DANS_STOCKAGE;
 			
 			if (LOG.isFatalEnabled()) {
 				LOG.fatal(message);
@@ -1033,7 +1044,7 @@ public class CopieurConceptService implements ICopieurConceptService {
 		= ArboresceurProjetCible
 			.getCoucheModelMetierTestPath()
 			.resolve(pNomConcept)
-			.resolve("impl")
+			.resolve(IMPL)
 			.resolve(this.mettrePremiereLettreEnMajuscule(pNomConcept) + "Test.java")
 			.toAbsolutePath().normalize();
 				
@@ -1102,7 +1113,7 @@ public class CopieurConceptService implements ICopieurConceptService {
 				+ " - Méthode fournirDTOConceptMetierSource(...) - " 
 				+ "le package " 
 				+ pathDTOObjetMetierSource 
-				+ " n'existe pas dans le stockage.";
+				+ PAS_DANS_STOCKAGE;
 			
 			if (LOG.isFatalEnabled()) {
 				LOG.fatal(message);
@@ -1215,7 +1226,7 @@ public class CopieurConceptService implements ICopieurConceptService {
 		= ArboresceurProjetSource
 			.getCoucheModelDTOMetierTestPath()
 			.resolve(pNomConcept)
-			.resolve("impl")
+			.resolve(IMPL)
 			.resolve(this.mettrePremiereLettreEnMajuscule(pNomConcept) + "DTOTest.java")
 			.toAbsolutePath().normalize();
 		
@@ -1229,7 +1240,7 @@ public class CopieurConceptService implements ICopieurConceptService {
 				+ " - Méthode fournirTestDTOConceptMetierSource(...) - " 
 				+ "le fichier " 
 				+ pathSource 
-				+ " n'existe pas dans le stockage.";
+				+ PAS_DANS_STOCKAGE;
 			
 			if (LOG.isFatalEnabled()) {
 				LOG.fatal(message);
@@ -1287,7 +1298,7 @@ public class CopieurConceptService implements ICopieurConceptService {
 		= ArboresceurProjetCible
 			.getCoucheModelDTOMetierTestPath()
 			.resolve(pNomConcept)
-			.resolve("impl")
+			.resolve(IMPL)
 			.resolve(this.mettrePremiereLettreEnMajuscule(pNomConcept) + "DTOTest.java")
 			.toAbsolutePath().normalize();
 		

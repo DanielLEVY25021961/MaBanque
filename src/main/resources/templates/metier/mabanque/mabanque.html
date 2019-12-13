@@ -391,32 +391,36 @@
 								
 								<table class="table table-striped">
 
-									<tr>
+									<thead>
 
-										<th>ID</th>
-										<th>Type de l'opération</th>
-										<th>date de l'opération</th>
-										<th>Montant de l'opération</th>
+										<tr>
+										
+											<th>ID</th>
+											<th>Type de l'opération</th>
+											<th>date de l'opération</th>
+											<th>Montant de l'opération</th>
+											
+										</tr>
 
-									</tr>
+									</thead>
 
-									<div th:if="${listeOperations}">
+									<tbody th:if="${listeOperations}">
 
 										<tr th:each="operation : ${listeOperations}">
 
 											<td th:text="${operation.id}">ID de l'opération</td>
 											<td th:text="${operation.class.simpleName}">Type de l'opération</td>
 											<td th:text="${operation.dateOperation}">date de l'opération</td>
-											<span th:if="${operation.class.simpleName.equals('VersementEntityJPA')}">
-												<td class="text-primary" th:text="${operation.montant} + '  € (euros)'">Montant du versement</td>												
-											</span>
-											<span th:unless="${operation.class.simpleName.equals('VersementEntityJPA')}">
-												<td class="text-danger" th:text="${-operation.montant} + '  € (euros)'">Montant du retrait</td>
-											</span>
-											
+											<td th:if="${operation.class.simpleName.equals('VersementEntityJPA')}" 
+												class="text-primary" th:text="${operation.montant} + '  € (euros)'">Montant du versement
+											</td>																							
+											<td th:unless="${operation.class.simpleName.equals('VersementEntityJPA')}" 
+												class="text-danger" th:text="${-operation.montant} + '  € (euros)'">Montant du retrait
+											</td>
+																						
 										</tr>
 
-									</div>
+									</tbody>
 
 								</table>
 

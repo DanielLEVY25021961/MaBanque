@@ -246,7 +246,7 @@ public class ConnecteurFTP {
 		final ConnecteurFTP connecteurFTP 
 			= new ConnecteurFTP(user, password, hostFTP, portFTP);
 		
-		final Proxy proxy   
+		final Proxy proxy    // NOPMD by dan on 13/12/19 15:19
 			= connecteurFTP.creerProxy(adresseIpProxy, portProxy, typeProxy);
 		
 //		connecteurFTP.connecterViaProxy(proxy);
@@ -718,7 +718,7 @@ public class ConnecteurFTP {
 		int stream;
 
 		while ((stream = this.bufferedInputStreamCanalDonnees.read(bytes)) != -1) {
-			response += new String(bytes, 0, stream);
+			response += new String(bytes, 0, stream); // NOPMD by dan on 13/12/19 15:19
 		}
 
 		System.out.println(response);

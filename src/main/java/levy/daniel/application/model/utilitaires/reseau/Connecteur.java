@@ -49,6 +49,11 @@ public final class Connecteur {
 	 * System.getProperty("line.separator").<br/>
 	 */
 	public static final String NEWLINE = System.getProperty("line.separator");
+
+	/**
+	 * "UTF-8".
+	 */
+	public static final String UTF8 = "UTF-8";
 	
 	/**
 	 * LOG : Log : 
@@ -173,8 +178,8 @@ public final class Connecteur {
 		//encode les caractères spéciaux  
         //pour qu'ils soient interprétables dans une URL.
         //Nous devons fournir la chaîne à encoder et le type d'encodage, ici UTF-8
-        String recherche = URLEncoder.encode("q", "UTF-8") + "=";
-        recherche = recherche + URLEncoder.encode(pRequete, "UTF-8");
+        String recherche = URLEncoder.encode("q", UTF8) + "=";
+        recherche = recherche + URLEncoder.encode(pRequete, UTF8);
         
         //Nous nous connectons, via un objet HTTPUrlConnection
         //à la nouvelle URL, la recherche se faisant en GET, 
@@ -269,8 +274,8 @@ public final class Connecteur {
 		//encode les caractères spéciaux  
         //pour qu'ils soient interprétables dans une URL.
         //Nous devons fournir la chaîne à encoder et le type d'encodage, ici UTF-8
-        String recherche = URLEncoder.encode("q", "UTF-8") + "=";
-        recherche = recherche + URLEncoder.encode(pRequete, "UTF-8");
+        String recherche = URLEncoder.encode("q", UTF8) + "=";
+        recherche = recherche + URLEncoder.encode(pRequete, UTF8);
         
         //Nous nous connectons, via un objet HTTPUrlConnection
         //à la nouvelle URL, la recherche se faisant en GET, 
