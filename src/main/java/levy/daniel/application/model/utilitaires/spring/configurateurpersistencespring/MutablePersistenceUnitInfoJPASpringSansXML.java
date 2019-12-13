@@ -483,7 +483,7 @@ public class MutablePersistenceUnitInfoJPASpringSansXML
 		}
 		
 		if (pMappingFileNames == null) {
-			this.mappingFileNames = new LinkedList<>();
+			this.mappingFileNames = new LinkedList<String>();
 		} else {
 			this.mappingFileNames = pMappingFileNames;
 //			for (final String mappingFileName : this.mappingFileNames) {
