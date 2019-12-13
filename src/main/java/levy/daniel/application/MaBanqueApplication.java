@@ -77,7 +77,7 @@ public class MaBanqueApplication implements CommandLineRunner {
 	/**
 	 * PasswordEncoder pour les mots de passe (SPRING SECURITY 5.2.1).
 	 */
-    private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
 
 	// *************************METHODES************************************/
