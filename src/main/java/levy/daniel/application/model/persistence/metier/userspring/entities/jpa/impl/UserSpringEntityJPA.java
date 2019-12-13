@@ -1,6 +1,7 @@
 package levy.daniel.application.model.persistence.metier.userspring.entities.jpa.impl;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
 
@@ -77,7 +78,7 @@ public class UserSpringEntityJPA implements Serializable {
 	/**
 	 * rôles du User en session.
 	 */
-	private Collection<RoleEntityJPA> roles;
+	private Collection<RoleEntityJPA> roles = new ArrayList<RoleEntityJPA>();
 	
 
 	/**

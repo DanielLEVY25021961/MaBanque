@@ -4,10 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import levy.daniel.application.model.persistence.metier.client.dao.jpaspring.ClientDao;
 import levy.daniel.application.model.persistence.metier.compte.dao.jpaspring.CompteDao;
 import levy.daniel.application.model.persistence.metier.operation.dao.jpaspring.OperationDao;
+import levy.daniel.application.model.persistence.metier.userspring.dao.jpaspring.RoleDao;
+import levy.daniel.application.model.persistence.metier.userspring.dao.jpaspring.UserSpringDao;
 import levy.daniel.application.model.services.metier.mabanque.IMaBanqueService;
 
 /**
@@ -57,6 +61,24 @@ public class MaBanqueApplication implements CommandLineRunner {
 	 */
 	@Autowired
 	private IMaBanqueService maBanqueService;
+	
+	/**
+	 * RoleDao
+	 */
+	@Autowired
+	private RoleDao roleDao;
+	
+	/**
+	 * UserSpringDao.
+	 */
+	@Autowired
+	private UserSpringDao userSpringDao;
+		
+	/**
+	 * PasswordEncoder pour les mots de passe (SPRING SECURITY 5.2.1).
+	 */
+    private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
 
 	// *************************METHODES************************************/
 		
@@ -88,6 +110,19 @@ public class MaBanqueApplication implements CommandLineRunner {
 	public void run(
 			final String... pArgs) throws Exception {
 		
+//		final RoleEntityJPA roleAdmin 
+//			= new RoleEntityJPA("ROLE_ADMIN", "Administrateur des données");
+//		this.roleDao.save(roleAdmin);
+//		
+//		final UserSpringEntityJPA userAdmin 
+//			= new UserSpringEntityJPA("admin"
+//					, this.passwordEncoder.encode("admin")
+//						, true);
+//		
+//		userAdmin.ajouterRole(roleAdmin);
+//		
+//		this.userSpringDao.save(userAdmin);
+//		
 //		final ClientEntityJPA client1 = this.clientDao.save(new ClientEntityJPA("client1", "client1@google.fr"));
 //		final ClientEntityJPA client2 = this.clientDao.save(new ClientEntityJPA("client2", "client2@google.fr"));
 //		final ClientEntityJPA client3 = this.clientDao.save(new ClientEntityJPA("client3", "client3@google.fr"));
