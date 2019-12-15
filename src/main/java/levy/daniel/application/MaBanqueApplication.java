@@ -97,7 +97,7 @@ public class MaBanqueApplication implements CommandLineRunner {
 	 * @param pArgs : String[] 
 	 */
 	public static void main(
-			final String[] pArgs) {
+			final String... pArgs) {
 		SpringApplication.run(MaBanqueApplication.class, pArgs);
 	} // Fin de  main(...).________________________________________________
 
