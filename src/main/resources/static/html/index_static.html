@@ -1,11 +1,7 @@
 <!DOCTYPE html>
-<html lang="fr" 
-	xmlns:th="http://www.thymeleaf.org" 
-		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-			xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5" 
-			layout:decorate="~{layouts/layout_classique}">
+<html lang="fr">
 
-    <head>
+	<head>
 	
 	    <!-- fichier HTML encodé en UTF-8 -->
 	    <meta charset="UTF-8" />
@@ -25,29 +21,23 @@
         <!-- pour site responsive -->	        	
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <!-- ==================== -->
-        <!--           CSS        -->
-        <!-- ==================== -->
-         <!-- BOOTSTRAP -->
-         <!-- lien vers CSS BOOTSTRAP AVEC WEBJARS-->
-         <!-- <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" 
-         	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" /> -->
-        
         <!-- LIEN vers CSS BOOTSTRAP DANS RESSOURCES -->
         <link rel="stylesheet" type="text/css" href="../../static/css/bootstrap.min.css"
             th:href="@{/css/bootstrap.min.css}" />
-            
+
         <!-- lien vers CSS PERSONNELLE -->
-		<link rel="stylesheet" type="text/css" href="../../../static/css/application.css" 
+		<link rel="stylesheet" type="text/css" href="../../static/css/application.css" 
 				th:href="@{/css/application.css}" />
-                     
+            
+        <!-- lien vers CSS BOOTSTRAP AVEC WEBJARS-->
+         <!-- <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" 
+         	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" /> -->
+         
          <!-- lien vers CSS FONT-AWESOME AVEC WEBJARS-->
           <!-- <link rel="stylesheet" type="text/css" href="/webjars/font-awesome/css/fontawesome.min.css"
          	th:href="@{/webjars/font-awesome/css/fontawesome.min.css}" /> -->
         
-        <!-- ==================== -->
-        <!--      JAVASCRIPT      -->
-        <!-- ==================== -->
+        <!-- JAVASCRIPT -->
 		<!-- ATTENTION : TOUJOURS METTRE JQUERY AVANT TOUT SCRIPT --> 
 		<!-- ***************************************************** -->
 		<!-- jQUERY AVEC WEBJARS -->
@@ -55,7 +45,7 @@
 				th:src="@{/webjars/jquery/jquery.min.js}"></script> -->
 
 		<!-- jQUERY DANS RESSOURCES -->
-		<script type="text/javascript" src="../../../static/js/jquery.min.js" 
+		<script type="text/javascript" src="../../static/js/jquery.min.js" 
 				th:src="@{/js/jquery.min.js}"></script>
 		<!-- ***************************************************** -->
 
@@ -65,7 +55,7 @@
      			th:src="@{/webjars/popper.js/popper.min.js}" ></script>  -->
 
         <!-- POPPER.js DANS RESSOURCES -->
-        <script type="text/javascript" src="../../../static/js/popper.min.js" 
+        <script type="text/javascript" src="../../static/js/popper.min.js" 
      			th:src="@{/js/popper.min.js}" ></script> 
 		<!-- ***************************************************** -->
 
@@ -75,43 +65,39 @@
 				th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>  -->
 
 		<!-- BOOTSTRAP.js DANS RESSOURCES -->
-		<script type="text/javascript" src="../../../static/js/bootstrap.min.js" 
+		<script type="text/javascript" src="../../static/js/bootstrap.min.js" 
 				th:src="@{/js/bootstrap.min.js}"></script> 
 		<!-- ***************************************************** -->
 
 		<!-- MAIN.js (script perso) -->
-		<script type="text/javascript" src="../../../static/js/main.js" 
+		<script type="text/javascript" src="../../static/js/main.js" 
 				th:src="@{/js/main.js}"></script>
                                
         <!-- titre de l'onglet -->	    
-        <title>/index.html</title>
-        
-    </head>
-    
-    
-    <body>
+	    <title>static/html/index.html</title>
+	    
+	</head>
+	
+	<body>
 
-		<div class="container">
+        <div class="container-fluid">
+
+            <div class="container">
+
+                <h1>static/html/index.html une page HTML statique</h1>
+
+                <div class="bg-primary">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                        Dolorum porro ipsa aspernatur quaerat fuga ex earum obcaecati libero maiores, 
+                        excepturi nesciunt suscipit, corporis fugiat blanditiis asperiores, 
+                        harum cum alias quam.
+                    </p>
+                </div>
+                
+            </div>
+
+        </div>
+	    
+	</body>
 	
-			<!-- CONTENU DECORANT LE LAYOUT DANS CETTE SECTION -->
-			<div layout:fragment="content">
-	
-				<div class="container-fluid">
-	
-					<div class="container">
-	
-						<h1>PAGE D'ACCUEIL /INDEX.html</h1>
-	
-	
-	
-					</div>
-	
-				</div>
-	
-			</div>
-	
-		</div>
-        
-    </body>
-    
 </html>
