@@ -193,7 +193,7 @@ public class RoleEntityJPA implements Serializable {
 	 */
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="ID")
+	@Column(name="ID", length=10)
 	public Long getId() {
 		return this.id;
 	} // Fin de getId().___________________________________________________
@@ -218,7 +218,7 @@ public class RoleEntityJPA implements Serializable {
 	 *
 	 * @return this.role : String.<br/>
 	 */
-	@Column(name="ROLE"
+	@Column(name="ROLE", length=100
 			, unique = false, updatable = true
 			, insertable = true, nullable = false)
 	public String getRole() {
@@ -245,7 +245,7 @@ public class RoleEntityJPA implements Serializable {
 	 *
 	 * @return this.descriptionRole : String.<br/>
 	 */
-	@Column(name="DESCRIPTION_ROLE"
+	@Column(name="DESCRIPTION_ROLE", length=200
 			, unique = false, updatable = true
 			, insertable = true, nullable = true)
 	public String getDescriptionRole() {

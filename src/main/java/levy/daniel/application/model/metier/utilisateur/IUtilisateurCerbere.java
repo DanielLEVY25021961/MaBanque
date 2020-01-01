@@ -178,7 +178,8 @@ import levy.daniel.application.model.metier.IExportateurJTable;
  *
  */
 public interface IUtilisateurCerbere
-		extends Comparable<IUtilisateurCerbere>, Serializable, Cloneable, IExportateurCsv, IExportateurJTable {
+		extends Comparable<IUtilisateurCerbere>, Serializable, Cloneable
+			, IExportateurCsv, IExportateurJTable {
 
 	/**
 	 * {@inheritDoc}
