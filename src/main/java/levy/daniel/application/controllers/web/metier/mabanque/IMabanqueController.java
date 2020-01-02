@@ -28,7 +28,7 @@ public interface IMabanqueController {
 	
 	
 	/**
-	 * redirige vers la page de la banque 
+	 * aiguille vers la page de la banque 
 	 * <code>/metier/mabanque/mabanque.html</code> 
 	 * à chaque déclenchement de l'<strong>action</strong> 
 	 * <code>/MaBanqueController/mabanque</code>.<br/>
