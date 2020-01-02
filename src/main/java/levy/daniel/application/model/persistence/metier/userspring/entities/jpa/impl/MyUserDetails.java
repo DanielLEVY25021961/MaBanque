@@ -116,6 +116,7 @@ public class MyUserDetails implements UserDetails {
 			
 			final GrantedAuthority grantedAuthority 
 				= new SimpleGrantedAuthority(role.getRole());
+			
 			resultat.add(grantedAuthority);
 			
 		}

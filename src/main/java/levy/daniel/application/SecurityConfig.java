@@ -97,9 +97,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
      * .<br/>
      * <br/>
      *
-     * @param pAuth
-     * @param pDataSource : javax.sql.DataSource : 
-     * DataSource déclaré dans application.properties injecté par SPRING
+     * @param pAuth : 
+	 * <code>org.springframework.security.config.annotation.authentication
+	 * .builders.AuthenticationManagerBuilder</code>.
+	 * @param pDataSource : <code>javax.sql.DataSource</code> : 
+     * DataSource déclaré dans application.properties injecté par SPRING.
      * 
      * @throws Exception
      */

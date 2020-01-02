@@ -37,22 +37,28 @@ public interface UserSpringDao extends JpaRepository<UserSpringEntityJPA, Long> 
 	
 	
 	/**
-	 * recherche en base un UserSpringEntityJPA via son username.
+	 * recherche dans le stockage un objet métier via son username (login).
 	 *
 	 * @param pUsername : String : Login du User.
 	 * 
-	 * @return : UserSpringEntityJPA
+	 * @return : UserSpringEntityJPA : objet métier.
 	 */
 	UserSpringEntityJPA findByUsername(String pUsername);
 	
+
 	
 	/**
-	 * .<br/>
-	 * <br/>
+	 * recherche dans le stockage une Page d'objets métier 
+	 * dont le username (login) contient la String passée en paramètre.<br/>
 	 *
-	 * @param pUsername
-	 * @param pPageable
-	 * @return : Page<UserSpringEntityJPA> :  .<br/>
+	 * @param pUsername : String : paramètre de recherche.
+	 * @param pPageable : 
+	 * <code>org.springframework.data.domain.Pageable</code> : 
+	 * Objet contenant le numéro (0-based) et la taille de la page à retourner.
+	 * 
+	 * @return : 
+	 * <code>org.springframework.data.domain.Page&lt;UserSpringEntityJPA&gt;</code> : 
+	 * Page des résultats.
 	 */
 	@Query("select user from UserSpringEntityJPA user where user.username LIKE :x ")
 	Page<UserSpringEntityJPA> rechercherRapideParPage(
@@ -61,15 +67,18 @@ public interface UserSpringDao extends JpaRepository<UserSpringEntityJPA, Long> 
 	
 	
 	/**
-	 * .<br/>
-	 * <br/>
+	 * recherche dans le stockage une Liste d'objets métier 
+	 * dont le username (login) contient la String passée en paramètre.<br/>
 	 *
-	 * @param pUsername
-	 * @return : List<UserSpringEntityJPA> :  .<br/>
+	 * @param pUsername : String : paramètre de recherche.
+	 * 
+	 * @return : java.util.List&lt;UserSpringEntityJPA&gt; : 
+	 * liste des résultats.<br/>
 	 */
 	@Query("select user from UserSpringEntityJPA user where user.username LIKE :x ")
 	List<UserSpringEntityJPA> rechercherRapide(
 			@Param("x") String pUsername);
+
 	
 
 } // FIN DE L'INTERFACE UserSpringDao.---------------------------------------
