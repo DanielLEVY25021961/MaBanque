@@ -341,7 +341,7 @@ public class UserSpringEntityJPA implements Serializable {
 	/**
 	 * Getter du boolean qui détermine si le USER est activé.
 	 *
-	 * @return this.active : boolean.<br/>
+	 * @return <code>this.active</code> : boolean.<br/>
 	 */
 	public boolean isActive() {
 		return this.active;
@@ -353,7 +353,7 @@ public class UserSpringEntityJPA implements Serializable {
 	* Setter du boolean qui détermine si le USER est activé.
 	*
 	* @param pActive : boolean : 
-	* valeur à passer à this.active.<br/>
+	* valeur à passer à <code>this.active</code>.<br/>
 	*/
 	public void setActive(final boolean pActive) {
 		this.active = pActive;

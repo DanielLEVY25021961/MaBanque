@@ -35,7 +35,7 @@ public class MyUserDetails implements UserDetails {
 	// ************************ATTRIBUTS************************************/
 	
 	/**
-	 * .
+	 * serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
 
