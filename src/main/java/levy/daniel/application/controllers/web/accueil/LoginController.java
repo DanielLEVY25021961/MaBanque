@@ -142,6 +142,8 @@ public class LoginController {
 
 	} // Fin de versLogin()._______________________________________________
 
+	
+	
 	/**
 	 * <ul>
 	 * <li><strong>récupère les informations du USER en SESSION</strong> et les
@@ -258,4 +260,6 @@ public class LoginController {
 
 	} // Fin de getLoggedUserInSession(...)._______________________________
 
+	
+	
 } // FIN DE LA CLASSE LoginController.---------------------------------------
