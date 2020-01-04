@@ -94,9 +94,12 @@ public class LoginController {
 	 * @return : String : "/accueil/login".<br/>
 	 */
 	@GetMapping("/versLogin")
-	public String versLogin(@RequestParam(value = "error", required = false) final String pError,
-			@RequestParam(value = "logout", required = false) final String pLogout, final Model pModel,
-			final HttpServletRequest pRequest, final HttpServletResponse pResponse) {
+	public String versLogin(
+			@RequestParam(value = "error", required = false) final String pError
+			, @RequestParam(value = "logout", required = false) final String pLogout
+			, final Model pModel
+			, final HttpServletRequest pRequest
+			, final HttpServletResponse pResponse) {
 
 		pModel.addAttribute("error", pError);
 		pModel.addAttribute("logout", pLogout);
