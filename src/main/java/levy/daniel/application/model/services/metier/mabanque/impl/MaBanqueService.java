@@ -85,6 +85,8 @@ public class MaBanqueService implements IMaBanqueService {
 
 	// *************************METHODES************************************/
 
+	
+	
 	/**
 	 * CONSTRUCTEUR D'ARITE NULLE.
 	 */
@@ -92,11 +94,14 @@ public class MaBanqueService implements IMaBanqueService {
 		super();
 	} // Fin de CONSTRUCTEUR D'ARITE NULLE.________________________________
 
+	
+	
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public AbstractCompteEntityJPA consulterCompte(final String pCodeCompte) throws Exception {
+	public AbstractCompteEntityJPA consulterCompte(
+			final String pCodeCompte) throws Exception {
 
 		/*
 		 * throw une IdentifiantManquantRunTimeException si pCodeCompte n'est pas
@@ -128,7 +133,7 @@ public class MaBanqueService implements IMaBanqueService {
 
 			}
 
-		} catch (Exception e) {
+		} catch (final Exception e) {
 
 			final String message = IMPOSSIBLE_TROUVER_IDENTIFIANT + pCodeCompte;
 			/*
@@ -143,13 +148,18 @@ public class MaBanqueService implements IMaBanqueService {
 
 	} // Fin de consulterCompte(...).______________________________________
 
+	
+	
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void verser(final String pCodeCompte, final double pMontant) throws Exception {
+	public void verser(
+			final String pCodeCompte
+				, final double pMontant) throws Exception {
 
-		final AbstractCompteEntityJPA compte = this.consulterCompte(pCodeCompte);
+		final AbstractCompteEntityJPA compte 
+			= this.consulterCompte(pCodeCompte);
 
 		/*
 		 * throw une ObjetManquantRunTimeException si le compte est introuvable.
@@ -174,7 +184,8 @@ public class MaBanqueService implements IMaBanqueService {
 		final LocalDateTime localDateTimeNow = LocalDateTime.now();
 
 		/* crée un versement. */
-		final VersementEntityJPA versement = new VersementEntityJPA(localDateTimeNow, pMontant, compte);
+		final VersementEntityJPA versement 
+			= new VersementEntityJPA(localDateTimeNow, pMontant, compte);
 
 		/* stocke en base le versement. */
 		this.operationDao.save(versement);
@@ -190,6 +201,8 @@ public class MaBanqueService implements IMaBanqueService {
 
 	} // Fin de verser(...)._______________________________________________
 
+	
+	
 	/**
 	 * {@inheritDoc}
 	 */
